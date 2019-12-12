@@ -136,7 +136,7 @@ void DolHost::Init(std::string supportDirectoryPath, std::string cpath)
     SConfig::GetInstance().m_Volume = 0;
     
     //Split CPU thread from GPU
-    SConfig::GetInstance().bCPUThread = false;
+    SConfig::GetInstance().bCPUThread = true;
     
     //Analitics
     SConfig::GetInstance().m_analytics_permission_asked = true;
@@ -620,7 +620,7 @@ void Host_Message(HostMessageID id) {
         g_Config.aspect_mode = AspectMode::Stretch;
         
         // Core is up,  lets enable Hybric Ubershaders
-        g_Config.iShaderCompilationMode = ShaderCompilationMode::SynchronousUberShaders;
+        g_Config.iShaderCompilationMode = ShaderCompilationMode::AsynchronousUberShaders;
         //g_Config.bPrecompileUberShaders = true;
         //g_Config.bBackgroundShaderCompiling = true;
         //g_Config.bDisableSpecializedShaders = false;
