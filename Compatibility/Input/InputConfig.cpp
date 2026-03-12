@@ -36,7 +36,7 @@ void InputConfig::SaveConfig()
 {
   std::string ini_filename = File::GetUserPath(D_CONFIG_IDX) + m_ini_name + ".ini";
 
-  IniFile inifile;
+  Common::IniFile inifile;
   inifile.Load(ini_filename);
 
   for (auto& controller : m_controllers)
