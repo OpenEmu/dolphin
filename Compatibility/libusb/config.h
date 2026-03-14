@@ -84,3 +84,5 @@
 
 /* Oldest Windows version supported */
 #define WINVER 0x0501
+
+#define PLATFORM_POSIX

@@ -2355,7 +2355,7 @@
 		3E8D2B891D21E6A00086BA59 /* url.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = url.h; sourceTree = "<group>"; };
 		3E8D2B8A1D21E6A00086BA59 /* urldata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = urldata.h; sourceTree = "<group>"; };
 		3E8D2C0E1D21E7AE0086BA59 /* config-mac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "config-mac.h"; sourceTree = "<group>"; };
-		3E8D2C101D21EA810086BA59 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = curl.h; path = dolphin/Externals/curl/curl/include/curl/curl.h; sourceTree = SOURCE_ROOT; };
+		3E8D2C101D21EA810086BA59 /* curl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curl.h; sourceTree = "<group>"; };
 		3E8D2C131D21EA810086BA59 /* curlver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = curlver.h; sourceTree = "<group>"; };
 		3E8D2C141D21EA810086BA59 /* easy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = easy.h; sourceTree = "<group>"; };
 		3E8D2C151D21EA810086BA59 /* mprintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mprintf.h; sourceTree = "<group>"; };
@@ -3418,6 +3418,7 @@
 		55F61CF52F65349000770D6E /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		55F61CF62F65349000770D6E /* security.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = security.md; sourceTree = "<group>"; };
 		55F61CF72F65349000770D6E /* WORKSPACE */ = {isa = PBXFileReference; lastKnownFileType = text; path = WORKSPACE; sourceTree = "<group>"; };
+		55F61CFA2F6538AE00770D6E /* miniupnpcstrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = miniupnpcstrings.h; sourceTree = "<group>"; };
 		5AE2ADF9B49F4F4EB95615D5 /* libCommon-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libCommon-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C0C8A955FC946C29B9EDABF /* libCore-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libCore-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C3A8A5609646488CCDC348 /* libminiupnpc-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libminiupnpc-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -4580,13 +4581,14 @@
 		3E3D70241C82AF0600091C4D /* Compatibilty */ = {
 			isa = PBXGroup;
 			children = (
-				5570EA4C2F64E8D40043407B /* curl_config.h */,
 				3E89F4751CCA7A0500EAE7AC /* Audio */,
 				3E89F47A1CCAB2A800EAE7AC /* Common */,
 				EE9E292C23BCF8E600EFD1A8 /* Core */,
+				5570EA4C2F64E8D40043407B /* curl_config.h */,
 				3E89F4771CCA7A1600EAE7AC /* Input */,
 				EED5036624F039B600970E7D /* libusb */,
 				EED5036424F039AF00970E7D /* lzma */,
+				55F61CF92F65388900770D6E /* miniunpnpc */,
 				3E89F4761CCA7A0D00EAE7AC /* Video */,
 				EED5036124F0373000970E7D /* VideoCommon */,
 			);
@@ -7711,6 +7713,14 @@
 			);
 			name = watcher;
 			path = watcher/watcher;
+			sourceTree = "<group>";
+		};
+		55F61CF92F65388900770D6E /* miniunpnpc */ = {
+			isa = PBXGroup;
+			children = (
+				55F61CFA2F6538AE00770D6E /* miniupnpcstrings.h */,
+			);
+			path = miniunpnpc;
 			sourceTree = "<group>";
 		};
 		5731B3A7B3FF4CC498C9C49A /* Common */ = {
