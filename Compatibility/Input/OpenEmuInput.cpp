@@ -18,6 +18,7 @@
 #include "Core/HW/WiimoteEmu/WiimoteEmu.h"
 #include "Core/HW/WiimoteReal/WiimoteReal.h"
 #include "Core/Host.h"
+#include "Core/System.h"
 #include "OpenEmuInput.h"
 
 #include "InputCommon/ControlReference/ControlReference.h"
@@ -137,9 +138,10 @@ static bool init_wiimotes = false;
 
     public:
         OEDevice(unsigned device, unsigned port);
-        void UpdateInput() override
+		ciface::Core::DeviceRemoval UpdateInput() override
         {
             poll_cb();
+			return ciface::Core::DeviceRemoval::Keep;
         }
         std::string GetName() const override { return GetDeviceName(m_device); }
         std::string GetSource() const override { return source; }
@@ -276,7 +278,7 @@ static bool init_wiimotes = false;
         Pad::Initialize();
         Keyboard::Initialize();
         
-        if (SConfig::GetInstance().bWii && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
+        if (Core::System::GetInstance().IsWii() && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
           {
             init_wiimotes = true;
             Wiimote::Initialize(Wiimote::InitializeMode::DO_NOT_WAIT_FOR_WIIMOTES);
@@ -332,7 +334,7 @@ void Input::openemu_set_controller_port_device(unsigned port, unsigned device)
 
         GCPad* gcPad = (GCPad*)Pad::GetConfig()->GetController(port);
         // load an empty inifile section, clears everything
-        IniFile::Section sec;
+		Common::IniFile::Section sec;
         gcPad->LoadConfig(&sec);
         gcPad->SetDefaultDevice(devJoypad);
 
@@ -374,11 +376,11 @@ void Input::openemu_set_controller_port_device(unsigned port, unsigned device)
         gcPad->UpdateReferences(g_controller_interface);
         Pad::GetConfig()->SaveConfig();
 
-    if (SConfig::GetInstance().bWii && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
+    if (Core::System::GetInstance().IsWii() && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
       {
         WiimoteEmu::Wiimote* wm = (WiimoteEmu::Wiimote*)Wiimote::GetConfig()->GetController(port);
         // load an empty inifile section, clears everything
-        IniFile::Section sec;
+	    Common::IniFile::Section sec;
         wm->LoadConfig(&sec);
         wm->SetDefaultDevice(devJoypad);
           
