@@ -3,6 +3,7 @@
 #include "OpenEmuInput.h"
 #include "OpenEmuController.h"
 
+#include "Core/System.h"
 #include "Core/ConfigManager.h"
 #include "Common/Config/Config.h"
 #include "Core/Config/MainSettings.h"
@@ -16,7 +17,7 @@ void input_poll_f()
 
 int16_t input_state_f(unsigned port, unsigned device, unsigned index, unsigned button)
 {
-    if (SConfig::GetInstance().bWii && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
+    if (Core::System::GetInstance().IsWii() && !Config::Get(Config::MAIN_BLUETOOTH_PASSTHROUGH_ENABLED))
     {
         //This is where we must translate the OpenEmu frontend keys presses stored in the keymap to bitmasks for Dolphin.
         return WiiRemotes[port].wiimote_keymap[button].value;
