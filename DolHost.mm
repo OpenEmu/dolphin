@@ -219,12 +219,14 @@ bool DolHost::LoadFileAtPath()
     //    //    else
     //    //        WiiUtils::DoDiscUpdate(nil, _gameRegionName);
 
+    // Input has to be up and running before the core is booted. BootCore() starts the
+    // emulation thread immediately, and that thread asserts that the controller interface
+    // is already initialized (Core::EmuThread -> ASSERT(g_controller_interface.IsInit())).
+    Input::Openemu_Input_Init();
+
     if (!BootManager::BootCore(system, BootParameters::GenerateFromFile(_gamePath), wsi))
         return false;
-   
-    // Initialize Input
-    Input::Openemu_Input_Init();
-    
+
     //Add 4 Joypads
     for (int i = 0; i < 4; i++)
         Input::openemu_set_controller_port_device(i, OEDolDevJoy);
@@ -428,7 +430,8 @@ void DolHost::SetCheat(std::string code, std::string type, bool enabled)
     if(!exists)
         gcodes.push_back(gcode);
     
-    Gecko::SetActiveCodes(Core::System::GetInstance(), gcodes);
+    Gecko::SetActiveCodes(gcodes, SConfig::GetInstance().GetGameID(),
+                          SConfig::GetInstance().GetRevision());
     
     
     //Check to make sure the ARcode is not already in the list
@@ -462,7 +465,13 @@ void DolHost::SetCheat(std::string code, std::string type, bool enabled)
     if(!exists)
         arcodes.push_back(arcode);
     
-    ActionReplay::RunAllActive();
+    // Codes are normally applied by the patch engine on the next frame. Running them right away
+    // additionally needs the CPU thread guard, which is only available while emulation runs.
+    if (Core::IsCPUThread())
+    {
+        const Core::CPUThreadGuard guard(Core::System::GetInstance());
+        ActionReplay::RunAllActive(guard);
+    }
 }
 
 # pragma mark - Controls
@@ -635,3 +644,18 @@ void Host_ShowVideoConfig(void*, const std::string&) {}
 void Host_YieldToUI() {}
 void Host_TitleChanged() {}
 void Host_UpdateProgressDialog(const char* caption, int position, int total) {}
+void Host_PPCSymbolsChanged() {}
+void Host_PPCBreakpointsChanged() {}
+void Host_JitCacheInvalidation() {}
+void Host_JitProfileDataWiped() {}
+void Host_UpdateDiscordClientID(const std::string& client_id) {}
+bool Host_UpdateDiscordPresenceRaw(const std::string& details, const std::string& state,
+                                   const std::string& large_image_key,
+                                   const std::string& large_image_text,
+                                   const std::string& small_image_key,
+                                   const std::string& small_image_text,
+                                   const int64_t start_timestamp, const int64_t end_timestamp,
+                                   const int party_size, const int party_max)
+{
+    return false;
+}
