@@ -23,6 +23,64 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		55C0EB000000000000000002 /* SpirvIntrinsics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EB000000000000000001 /* SpirvIntrinsics.cpp */; };
+		55C0EB000000000000000004 /* HSP_DeviceNull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0EB000000000000000003 /* HSP_DeviceNull.cpp */; };
+		55C0EA0000000000000002 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0EA0000000000000001 /* Metal.framework */; };
+		55C0EA0000000000000004 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0EA0000000000000003 /* QuartzCore.framework */; };
+		55C0E9000000000000000002 /* HSP_DeviceARAMExpansion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E9000000000000000001 /* HSP_DeviceARAMExpansion.cpp */; };
+		55C0E9000000000000000004 /* Microphone.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E9000000000000000003 /* Microphone.cpp */; };
+		55C0E9000000000000000006 /* SkylanderFigure.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E9000000000000000005 /* SkylanderFigure.cpp */; };
+		55C0E9000000000000000008 /* Spirv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E9000000000000000007 /* Spirv.cpp */; };
+		55C0E900000000000000000A /* implot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E9000000000000000009 /* implot.cpp */; };
+		55C0E900000000000000000C /* implot_items.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E900000000000000000B /* implot_items.cpp */; };
+		55C0E8000000000000000004 /* spirv_cfg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000003 /* spirv_cfg.cpp */; };
+		55C0E8000000000000000006 /* spirv_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000005 /* spirv_cpp.cpp */; };
+		55C0E8000000000000000008 /* spirv_cross.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000007 /* spirv_cross.cpp */; };
+		55C0E800000000000000000A /* spirv_cross_c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000009 /* spirv_cross_c.cpp */; };
+		55C0E800000000000000000C /* spirv_cross_parsed_ir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E800000000000000000B /* spirv_cross_parsed_ir.cpp */; };
+		55C0E800000000000000000E /* spirv_cross_util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E800000000000000000D /* spirv_cross_util.cpp */; };
+		55C0E8000000000000000010 /* spirv_glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E800000000000000000F /* spirv_glsl.cpp */; };
+		55C0E8000000000000000012 /* spirv_hlsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000011 /* spirv_hlsl.cpp */; };
+		55C0E8000000000000000014 /* spirv_msl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000013 /* spirv_msl.cpp */; };
+		55C0E8000000000000000016 /* spirv_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000015 /* spirv_parser.cpp */; };
+		55C0E8000000000000000018 /* spirv_reflect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E8000000000000000017 /* spirv_reflect.cpp */; };
+		55C0E7000000000000000001 /* libvideometal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5574741C2F64AEBB00F240F0 /* libvideometal.a */; };
+		55C0E7000000000000000005 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0E7000000000000000004 /* libresolv.tbd */; };
+		55C0E60000000000000002 /* HSP_Device.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000001 /* HSP_Device.cpp */; };
+		55C0E60000000000000004 /* TAPServerModem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000003 /* TAPServerModem.cpp */; };
+		55C0E60000000000000006 /* WC24FriendList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000005 /* WC24FriendList.cpp */; };
+		55C0E60000000000000008 /* Infinity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000007 /* Infinity.cpp */; };
+		55C0E6000000000000000A /* LogitechMic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000009 /* LogitechMic.cpp */; };
+		55C0E6000000000000000C /* Skylander.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E5000000000000000B /* Skylander.cpp */; };
+		55C0E6000000000000000E /* WiiSpeak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E5000000000000000D /* WiiSpeak.cpp */; };
+		55C0E60000000000000010 /* MagneticCardReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E5000000000000000F /* MagneticCardReader.cpp */; };
+		55C0E60000000000000012 /* C1231BR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000011 /* C1231BR.cpp */; };
+		55C0E60000000000000014 /* C1231LR.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000013 /* C1231LR.cpp */; };
+		55C0E60000000000000016 /* PerformanceTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000015 /* PerformanceTracker.cpp */; };
+		55C0E60000000000000018 /* OnScreenUI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E50000000000000017 /* OnScreenUI.cpp */; };
+		55C0E4000000000000000009 /* lz4.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E2000000000000000001 /* lz4.c */; };
+		55C0E400000000000000000A /* liblz4.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0E4000000000000000004 /* liblz4.a */; };
+		55C0E3000000000000000004 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0E3000000000000000003 /* Security.framework */; };
+		55C0E3000000000000000002 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C0E3000000000000000001 /* SystemConfiguration.framework */; };
+		55C0E2000000000000000002 /* lz4.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E2000000000000000001 /* lz4.c */; };
+		0055C0E10000000000000001 /* constant_time.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000000 /* constant_time.c */; };
+		0055C0E10000000000000003 /* mps_reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000002 /* mps_reader.c */; };
+		0055C0E10000000000000005 /* mps_trace.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000004 /* mps_trace.c */; };
+		0055C0E10000000000000007 /* psa_crypto.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000006 /* psa_crypto.c */; };
+		0055C0E10000000000000009 /* psa_crypto_aead.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000008 /* psa_crypto_aead.c */; };
+		0055C0E1000000000000000B /* psa_crypto_cipher.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000000A /* psa_crypto_cipher.c */; };
+		0055C0E1000000000000000D /* psa_crypto_client.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000000C /* psa_crypto_client.c */; };
+		0055C0E1000000000000000F /* psa_crypto_driver_wrappers.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000000E /* psa_crypto_driver_wrappers.c */; };
+		0055C0E10000000000000011 /* psa_crypto_ecp.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000010 /* psa_crypto_ecp.c */; };
+		0055C0E10000000000000013 /* psa_crypto_hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000012 /* psa_crypto_hash.c */; };
+		0055C0E10000000000000015 /* psa_crypto_mac.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000014 /* psa_crypto_mac.c */; };
+		0055C0E10000000000000017 /* psa_crypto_rsa.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000016 /* psa_crypto_rsa.c */; };
+		0055C0E10000000000000019 /* psa_crypto_se.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000018 /* psa_crypto_se.c */; };
+		0055C0E1000000000000001B /* psa_crypto_slot_management.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000001A /* psa_crypto_slot_management.c */; };
+		0055C0E1000000000000001D /* psa_crypto_storage.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000001C /* psa_crypto_storage.c */; };
+		0055C0E1000000000000001F /* psa_its_file.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E1000000000000001E /* psa_its_file.c */; };
+		0055C0E10000000000000021 /* ssl_msg.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000020 /* ssl_msg.c */; };
+		0055C0E10000000000000023 /* ssl_tls13_keys.c in Sources */ = {isa = PBXBuildFile; fileRef = 0055C0E10000000000000022 /* ssl_tls13_keys.c */; };
 		3E0A56EE1FAF7EDC00D755B8 /* VideoConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D75E31C82B2DE00091C4D /* VideoConfig.cpp */; };
 		3E0BD1281F8E89D30037C92D /* Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3E3D71AA1C82B0F800091C4D /* Core.cpp */; };
 		3E1DDEC81D74AC1E00BB8009 /* OEWiiSystemController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E22178A1D74A83E00C55942 /* OEWiiSystemController.m */; };
@@ -526,6 +584,7 @@
 		3EFF278B1F84621200B4FD11 /* cubeb.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF27391F84617A00B4FD11 /* cubeb.c */; };
 		3EFF278F1F84621200B4FD11 /* cubeb_mixer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF274C1F84617A00B4FD11 /* cubeb_mixer.cpp */; };
 		3EFF27901F84621200B4FD11 /* cubeb_resampler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF274D1F84617A00B4FD11 /* cubeb_resampler.cpp */; };
+		5570E9D22F65A0000043407B /* resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 5570E9D12F65A0000043407B /* resample.c */; };
 		3EFF27911F84621200B4FD11 /* cubeb_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF275B1F84617A00B4FD11 /* cubeb_log.cpp */; };
 		3EFF28761F85526E00B4FD11 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF27F71F85500D00B4FD11 /* io.c */; };
 		3EFF28771F85526E00B4FD11 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = 3EFF27FC1F85500D00B4FD11 /* core.c */; };
@@ -1212,9 +1271,105 @@
 		EEF97BED25A77079008C4BB2 /* FreeLookManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF97BE625A77078008C4BB2 /* FreeLookManager.cpp */; };
 		EEF97BEE25A77079008C4BB2 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF97BEA25A77078008C4BB2 /* System.cpp */; };
 		EEF97C1D25A77416008C4BB2 /* OSThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEF97C1B25A77415008C4BB2 /* OSThread.cpp */; };
+		55C0DE0000000000000003E8 /* altsvc.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000000 /* altsvc.c */; };
+		55C0DE0000000000000003E9 /* amigaos.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000001 /* amigaos.c */; };
+		55C0DE0000000000000003EA /* asyn-base.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000002 /* asyn-base.c */; };
+		55C0DE0000000000000003EB /* asyn-thrdd.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000003 /* asyn-thrdd.c */; };
+		55C0DE0000000000000003EC /* bufq.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000004 /* bufq.c */; };
+		55C0DE0000000000000003ED /* bufref.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000005 /* bufref.c */; };
+		55C0DE0000000000000003EE /* cf-h1-proxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000006 /* cf-h1-proxy.c */; };
+		55C0DE0000000000000003EF /* cf-h2-proxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000007 /* cf-h2-proxy.c */; };
+		55C0DE0000000000000003F0 /* cf-haproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000008 /* cf-haproxy.c */; };
+		55C0DE0000000000000003F1 /* cf-https-connect.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000009 /* cf-https-connect.c */; };
+		55C0DE0000000000000003F2 /* cf-socket.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000A /* cf-socket.c */; };
+		55C0DE0000000000000003F3 /* cfilters.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000B /* cfilters.c */; };
+		55C0DE0000000000000003F4 /* cshutdn.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000C /* cshutdn.c */; };
+		55C0DE0000000000000003F5 /* curl_get_line.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000D /* curl_get_line.c */; };
+		55C0DE0000000000000003F6 /* curl_range.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000E /* curl_range.c */; };
+		55C0DE0000000000000003F7 /* curl_sha512_256.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000000F /* curl_sha512_256.c */; };
+		55C0DE0000000000000003F8 /* curl_trc.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000010 /* curl_trc.c */; };
+		55C0DE0000000000000003F9 /* cw-out.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000011 /* cw-out.c */; };
+		55C0DE0000000000000003FA /* cw-pause.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000012 /* cw-pause.c */; };
+		55C0DE0000000000000003FB /* dllmain.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000013 /* dllmain.c */; };
+		55C0DE0000000000000003FC /* doh.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000014 /* doh.c */; };
+		55C0DE0000000000000003FD /* dynhds.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000015 /* dynhds.c */; };
+		55C0DE0000000000000003FE /* easygetopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000016 /* easygetopt.c */; };
+		55C0DE0000000000000003FF /* easyoptions.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000017 /* easyoptions.c */; };
+		55C0DE000000000000000400 /* fake_addrinfo.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000018 /* fake_addrinfo.c */; };
+		55C0DE000000000000000401 /* fopen.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000019 /* fopen.c */; };
+		55C0DE000000000000000402 /* headers.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001A /* headers.c */; };
+		55C0DE000000000000000403 /* hsts.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001B /* hsts.c */; };
+		55C0DE000000000000000404 /* http1.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001C /* http1.c */; };
+		55C0DE000000000000000405 /* http_aws_sigv4.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001D /* http_aws_sigv4.c */; };
+		55C0DE000000000000000406 /* httpsrr.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001E /* httpsrr.c */; };
+		55C0DE000000000000000407 /* idn.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000001F /* idn.c */; };
+		55C0DE000000000000000408 /* macos.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000020 /* macos.c */; };
+		55C0DE000000000000000409 /* mime.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000021 /* mime.c */; };
+		55C0DE00000000000000040A /* mqtt.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000022 /* mqtt.c */; };
+		55C0DE00000000000000040B /* multi_ev.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000023 /* multi_ev.c */; };
+		55C0DE00000000000000040C /* noproxy.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000024 /* noproxy.c */; };
+		55C0DE00000000000000040D /* psl.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000025 /* psl.c */; };
+		55C0DE00000000000000040E /* rand.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000026 /* rand.c */; };
+		55C0DE00000000000000040F /* rename.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000027 /* rename.c */; };
+		55C0DE000000000000000410 /* request.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000028 /* request.c */; };
+		55C0DE000000000000000411 /* setopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000029 /* setopt.c */; };
+		55C0DE000000000000000412 /* sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002A /* sha256.c */; };
+		55C0DE000000000000000413 /* socketpair.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002B /* socketpair.c */; };
+		55C0DE000000000000000414 /* strcase.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002C /* strcase.c */; };
+		55C0DE000000000000000415 /* uint-bset.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002D /* uint-bset.c */; };
+		55C0DE000000000000000416 /* uint-hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002E /* uint-hash.c */; };
+		55C0DE000000000000000417 /* uint-spbset.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE00000000000000002F /* uint-spbset.c */; };
+		55C0DE000000000000000418 /* uint-table.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000030 /* uint-table.c */; };
+		55C0DE000000000000000419 /* urlapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000031 /* urlapi.c */; };
+		55C0DE00000000000000041A /* ws.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DE000000000000000032 /* ws.c */; };
+		55C0DF000000000000001388 /* EFBInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000000 /* EFBInterface.cpp */; };
+		55C0DF000000000000001389 /* FrameDumper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000001 /* FrameDumper.cpp */; };
+		55C0DF00000000000000138A /* PerformanceMetrics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000002 /* PerformanceMetrics.cpp */; };
+		55C0DF00000000000000138B /* Present.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000003 /* Present.cpp */; };
+		55C0DF00000000000000138C /* TextureUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000004 /* TextureUtils.cpp */; };
+		55C0DF00000000000000138D /* Widescreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000005 /* Widescreen.cpp */; };
+		55C0DF00000000000000138E /* XFStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000006 /* XFStateManager.cpp */; };
+		55C0DF00000000000000138F /* PipelineUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000007 /* PipelineUtils.cpp */; };
+		55C0DF000000000000001390 /* CPUCull.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000008 /* CPUCull.cpp */; };
+		55C0DF000000000000001391 /* SWEfbInterface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000009 /* SWEfbInterface.cpp */; };
+		55C0DF000000000000001392 /* HSP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000A /* HSP.cpp */; };
+		55C0DF000000000000001393 /* AMMediaboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000B /* AMMediaboard.cpp */; };
+		55C0DF000000000000001394 /* TimePlayed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000C /* TimePlayed.cpp */; };
+		55C0DF000000000000001395 /* WC24PatchEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000D /* WC24PatchEngine.cpp */; };
+		55C0DF000000000000001396 /* CPUThreadConfigCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000E /* CPUThreadConfigCallback.cpp */; };
+		55C0DF000000000000001397 /* AesDevice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000000F /* AesDevice.cpp */; };
+		55C0DF000000000000001398 /* Sha.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000010 /* Sha.cpp */; };
+		55C0DF000000000000001399 /* USBScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000011 /* USBScanner.cpp */; };
+		55C0DF00000000000000139A /* WC24Send.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000012 /* WC24Send.cpp */; };
+		55C0DF00000000000000139B /* NWC24DL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000013 /* NWC24DL.cpp */; };
+		55C0DF00000000000000139C /* VFFUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000014 /* VFFUtil.cpp */; };
+		55C0DF00000000000000139D /* ConstantPropagation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000015 /* ConstantPropagation.cpp */; };
+		55C0DF00000000000000139E /* DesiredWiimoteState.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000016 /* DesiredWiimoteState.cpp */; };
+		55C0DF00000000000000139F /* Shinkansen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000017 /* Shinkansen.cpp */; };
+		55C0DF0000000000000013A0 /* EXI_DeviceBaseboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000018 /* EXI_DeviceBaseboard.cpp */; };
+		55C0DF0000000000000013A1 /* EXI_DeviceModem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF000000000000000019 /* EXI_DeviceModem.cpp */; };
+		55C0DF0000000000000013A2 /* SI_DeviceAMBaseboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000001A /* SI_DeviceAMBaseboard.cpp */; };
+		55C0DF0000000000000013A3 /* ASnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000001B /* ASnd.cpp */; };
+		55C0DF0000000000000013A4 /* AESnd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000001C /* AESnd.cpp */; };
+		55C0DF0000000000000013A5 /* IRPassthrough.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 55C0DF00000000000000001D /* IRPassthrough.cpp */; };
+		55C0E00000000000000002 /* vquic.c in Sources */ = {isa = PBXBuildFile; fileRef = 55C0E00000000000000001 /* vquic.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		55C0E7000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AE37EB7920C4C86939DE6E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 557474082F64AEBB00F240F0;
+			remoteInfo = videometal;
+		};
+		55C0E4000000000000000006 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8AE37EB7920C4C86939DE6E9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 55C0E4000000000000000001;
+			remoteInfo = lz4;
+		};
 		5550902B27FA9E6A00CA618C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8AE37EB7920C4C86939DE6E9 /* Project object */;
@@ -1504,6 +1659,62 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55C0EB000000000000000001 /* SpirvIntrinsics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/glslang/glslang/glslang/MachineIndependent/SpirvIntrinsics.cpp; sourceTree = SOURCE_ROOT; };
+		55C0EB000000000000000003 /* HSP_DeviceNull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/HSP/HSP_DeviceNull.cpp; sourceTree = SOURCE_ROOT; };
+		55C0EA0000000000000001 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		55C0EA0000000000000003 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		55C0E9000000000000000001 /* HSP_DeviceARAMExpansion.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/HSP/HSP_DeviceARAMExpansion.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E9000000000000000003 /* Microphone.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/Microphone.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E9000000000000000005 /* SkylanderFigure.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/Skylanders/SkylanderFigure.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E9000000000000000007 /* Spirv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/VideoCommon/Spirv.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E9000000000000000009 /* implot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/implot/implot/implot.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E900000000000000000B /* implot_items.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/implot/implot/implot_items.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000003 /* spirv_cfg.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cfg.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000005 /* spirv_cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cpp.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000007 /* spirv_cross.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cross.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000009 /* spirv_cross_c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cross_c.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E800000000000000000B /* spirv_cross_parsed_ir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cross_parsed_ir.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E800000000000000000D /* spirv_cross_util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_cross_util.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E800000000000000000F /* spirv_glsl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_glsl.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000011 /* spirv_hlsl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_hlsl.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000013 /* spirv_msl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_msl.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000015 /* spirv_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_parser.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E8000000000000000017 /* spirv_reflect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Externals/spirv_cross/SPIRV-Cross/spirv_reflect.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E7000000000000000004 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		55C0E50000000000000001 /* HSP_Device.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/HSP/HSP_Device.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000003 /* TAPServerModem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/EXI/Modem/TAPServerModem.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000005 /* WC24FriendList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/Network/KD/Mail/WC24FriendList.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000007 /* Infinity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/Infinity.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000009 /* LogitechMic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/LogitechMic.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E5000000000000000B /* Skylander.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/Skylanders/Skylander.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E5000000000000000D /* WiiSpeak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/IOS/USB/Emulated/WiiSpeak.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E5000000000000000F /* MagneticCardReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/MagCard/MagneticCardReader.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000011 /* C1231BR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/MagCard/C1231BR.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000013 /* C1231LR.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/Core/HW/MagCard/C1231LR.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000015 /* PerformanceTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/VideoCommon/PerformanceTracker.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E50000000000000017 /* OnScreenUI.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dolphin/Source/Core/VideoCommon/OnScreenUI.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E4000000000000000004 /* liblz4.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 1; path = liblz4.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		55C0E3000000000000000003 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		55C0E3000000000000000001 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		55C0E2000000000000000001 /* lz4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dolphin/Externals/lz4/lz4/lib/lz4.c; sourceTree = SOURCE_ROOT; };
+		0055C0E10000000000000000 /* constant_time.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = constant_time.c; sourceTree = "<group>"; };
+		0055C0E10000000000000002 /* mps_reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mps_reader.c; sourceTree = "<group>"; };
+		0055C0E10000000000000004 /* mps_trace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mps_trace.c; sourceTree = "<group>"; };
+		0055C0E10000000000000006 /* psa_crypto.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto.c; sourceTree = "<group>"; };
+		0055C0E10000000000000008 /* psa_crypto_aead.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_aead.c; sourceTree = "<group>"; };
+		0055C0E1000000000000000A /* psa_crypto_cipher.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_cipher.c; sourceTree = "<group>"; };
+		0055C0E1000000000000000C /* psa_crypto_client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_client.c; sourceTree = "<group>"; };
+		0055C0E1000000000000000E /* psa_crypto_driver_wrappers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_driver_wrappers.c; sourceTree = "<group>"; };
+		0055C0E10000000000000010 /* psa_crypto_ecp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_ecp.c; sourceTree = "<group>"; };
+		0055C0E10000000000000012 /* psa_crypto_hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_hash.c; sourceTree = "<group>"; };
+		0055C0E10000000000000014 /* psa_crypto_mac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_mac.c; sourceTree = "<group>"; };
+		0055C0E10000000000000016 /* psa_crypto_rsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_rsa.c; sourceTree = "<group>"; };
+		0055C0E10000000000000018 /* psa_crypto_se.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_se.c; sourceTree = "<group>"; };
+		0055C0E1000000000000001A /* psa_crypto_slot_management.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_slot_management.c; sourceTree = "<group>"; };
+		0055C0E1000000000000001C /* psa_crypto_storage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_crypto_storage.c; sourceTree = "<group>"; };
+		0055C0E1000000000000001E /* psa_its_file.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = psa_its_file.c; sourceTree = "<group>"; };
+		0055C0E10000000000000020 /* ssl_msg.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ssl_msg.c; sourceTree = "<group>"; };
+		0055C0E10000000000000022 /* ssl_tls13_keys.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ssl_tls13_keys.c; sourceTree = "<group>"; };
 		0AB74F25F8044E96B632EF77 /* libvideosoftware-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libvideosoftware-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		125948FD17D5434DA13C8293 /* libUICommon-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libUICommon-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DB9EC0F64AC4815A7E27952 /* libvideocommon-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libvideocommon-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2583,6 +2794,7 @@
 		3EFF274E1F84617A00B4FD11 /* cubeb_jack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cubeb_jack.cpp; sourceTree = "<group>"; };
 		3EFF274F1F84617A00B4FD11 /* cubeb_alsa.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cubeb_alsa.c; sourceTree = "<group>"; };
 		3EFF27511F84617A00B4FD11 /* cubeb-speex-resampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "cubeb-speex-resampler.h"; sourceTree = "<group>"; };
+		5570E9D12F65A0000043407B /* resample.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = resample.c; path = dolphin/Externals/cubeb/cubeb/subprojects/speex/resample.c; sourceTree = SOURCE_ROOT; };
 		3EFF27521F84617A00B4FD11 /* cubeb_resampler_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubeb_resampler_internal.h; sourceTree = "<group>"; };
 		3EFF27531F84617A00B4FD11 /* cubeb_ringbuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubeb_ringbuffer.h; sourceTree = "<group>"; };
 		3EFF27541F84617A00B4FD11 /* cubeb_resampler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cubeb_resampler.h; sourceTree = "<group>"; };
@@ -3335,8 +3547,6 @@
 		55F61C852F65349000770D6E /* test_performance.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_performance.cpp; sourceTree = "<group>"; };
 		55F61C862F65349000770D6E /* test_simple.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = test_simple.cpp; sourceTree = "<group>"; };
 		55F61C8B2F65349000770D6E /* watcher.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = watcher.hpp; sourceTree = "<group>"; };
-		55F61C8E2F65349000770D6E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		55F61C902F65349000770D6E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		55F61C942F65349000770D6E /* dir */ = {isa = PBXFileReference; lastKnownFileType = text; path = dir; sourceTree = "<group>"; };
 		55F61C952F65349000770D6E /* file */ = {isa = PBXFileReference; lastKnownFileType = text; path = file; sourceTree = "<group>"; };
 		55F61C962F65349000770D6E /* manyrun */ = {isa = PBXFileReference; lastKnownFileType = text; path = manyrun; sourceTree = "<group>"; };
@@ -4219,6 +4429,88 @@
 		F4EAB8D2A0AA45A183467CCD /* libAudioCommon-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libAudioCommon-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65EF8E25FB448D2BA4D3070 /* libbdisasm-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libbdisasm-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE6F57C176374ABD8861D732 /* libInputCommon-dol.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libInputCommon-dol.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		55C0DE000000000000000000 /* altsvc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = altsvc.c; path = dolphin/Externals/curl/curl/lib/altsvc.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000001 /* amigaos.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = amigaos.c; path = dolphin/Externals/curl/curl/lib/amigaos.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000002 /* asyn-base.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = asyn-base.c; path = dolphin/Externals/curl/curl/lib/asyn-base.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000003 /* asyn-thrdd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = asyn-thrdd.c; path = dolphin/Externals/curl/curl/lib/asyn-thrdd.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000004 /* bufq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufq.c; path = dolphin/Externals/curl/curl/lib/bufq.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000005 /* bufref.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bufref.c; path = dolphin/Externals/curl/curl/lib/bufref.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000006 /* cf-h1-proxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cf-h1-proxy.c; path = dolphin/Externals/curl/curl/lib/cf-h1-proxy.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000007 /* cf-h2-proxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cf-h2-proxy.c; path = dolphin/Externals/curl/curl/lib/cf-h2-proxy.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000008 /* cf-haproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cf-haproxy.c; path = dolphin/Externals/curl/curl/lib/cf-haproxy.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000009 /* cf-https-connect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cf-https-connect.c; path = dolphin/Externals/curl/curl/lib/cf-https-connect.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000A /* cf-socket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cf-socket.c; path = dolphin/Externals/curl/curl/lib/cf-socket.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000B /* cfilters.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cfilters.c; path = dolphin/Externals/curl/curl/lib/cfilters.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000C /* cshutdn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cshutdn.c; path = dolphin/Externals/curl/curl/lib/cshutdn.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000D /* curl_get_line.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = curl_get_line.c; path = dolphin/Externals/curl/curl/lib/curl_get_line.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000E /* curl_range.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = curl_range.c; path = dolphin/Externals/curl/curl/lib/curl_range.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000000F /* curl_sha512_256.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = curl_sha512_256.c; path = dolphin/Externals/curl/curl/lib/curl_sha512_256.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000010 /* curl_trc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = curl_trc.c; path = dolphin/Externals/curl/curl/lib/curl_trc.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000011 /* cw-out.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cw-out.c; path = dolphin/Externals/curl/curl/lib/cw-out.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000012 /* cw-pause.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = cw-pause.c; path = dolphin/Externals/curl/curl/lib/cw-pause.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000013 /* dllmain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dllmain.c; path = dolphin/Externals/curl/curl/lib/dllmain.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000014 /* doh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = doh.c; path = dolphin/Externals/curl/curl/lib/doh.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000015 /* dynhds.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dynhds.c; path = dolphin/Externals/curl/curl/lib/dynhds.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000016 /* easygetopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = easygetopt.c; path = dolphin/Externals/curl/curl/lib/easygetopt.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000017 /* easyoptions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = easyoptions.c; path = dolphin/Externals/curl/curl/lib/easyoptions.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000018 /* fake_addrinfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fake_addrinfo.c; path = dolphin/Externals/curl/curl/lib/fake_addrinfo.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000019 /* fopen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = fopen.c; path = dolphin/Externals/curl/curl/lib/fopen.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001A /* headers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = headers.c; path = dolphin/Externals/curl/curl/lib/headers.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001B /* hsts.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = hsts.c; path = dolphin/Externals/curl/curl/lib/hsts.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001C /* http1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = http1.c; path = dolphin/Externals/curl/curl/lib/http1.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001D /* http_aws_sigv4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = http_aws_sigv4.c; path = dolphin/Externals/curl/curl/lib/http_aws_sigv4.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001E /* httpsrr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = httpsrr.c; path = dolphin/Externals/curl/curl/lib/httpsrr.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000001F /* idn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = idn.c; path = dolphin/Externals/curl/curl/lib/idn.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000020 /* macos.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = macos.c; path = dolphin/Externals/curl/curl/lib/macos.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000021 /* mime.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mime.c; path = dolphin/Externals/curl/curl/lib/mime.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000022 /* mqtt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mqtt.c; path = dolphin/Externals/curl/curl/lib/mqtt.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000023 /* multi_ev.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = multi_ev.c; path = dolphin/Externals/curl/curl/lib/multi_ev.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000024 /* noproxy.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = noproxy.c; path = dolphin/Externals/curl/curl/lib/noproxy.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000025 /* psl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = psl.c; path = dolphin/Externals/curl/curl/lib/psl.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000026 /* rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rand.c; path = dolphin/Externals/curl/curl/lib/rand.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000027 /* rename.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rename.c; path = dolphin/Externals/curl/curl/lib/rename.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000028 /* request.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = request.c; path = dolphin/Externals/curl/curl/lib/request.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000029 /* setopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = setopt.c; path = dolphin/Externals/curl/curl/lib/setopt.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002A /* sha256.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sha256.c; path = dolphin/Externals/curl/curl/lib/sha256.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002B /* socketpair.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = socketpair.c; path = dolphin/Externals/curl/curl/lib/socketpair.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002C /* strcase.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = strcase.c; path = dolphin/Externals/curl/curl/lib/strcase.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002D /* uint-bset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uint-bset.c; path = dolphin/Externals/curl/curl/lib/uint-bset.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002E /* uint-hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uint-hash.c; path = dolphin/Externals/curl/curl/lib/uint-hash.c; sourceTree = SOURCE_ROOT; };
+		55C0DE00000000000000002F /* uint-spbset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uint-spbset.c; path = dolphin/Externals/curl/curl/lib/uint-spbset.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000030 /* uint-table.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = uint-table.c; path = dolphin/Externals/curl/curl/lib/uint-table.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000031 /* urlapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = urlapi.c; path = dolphin/Externals/curl/curl/lib/urlapi.c; sourceTree = SOURCE_ROOT; };
+		55C0DE000000000000000032 /* ws.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = ws.c; path = dolphin/Externals/curl/curl/lib/ws.c; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000000 /* EFBInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EFBInterface.cpp; path = dolphin/Source/Core/VideoCommon/EFBInterface.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000001 /* FrameDumper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FrameDumper.cpp; path = dolphin/Source/Core/VideoCommon/FrameDumper.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000002 /* PerformanceMetrics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PerformanceMetrics.cpp; path = dolphin/Source/Core/VideoCommon/PerformanceMetrics.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000003 /* Present.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Present.cpp; path = dolphin/Source/Core/VideoCommon/Present.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000004 /* TextureUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TextureUtils.cpp; path = dolphin/Source/Core/VideoCommon/TextureUtils.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000005 /* Widescreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Widescreen.cpp; path = dolphin/Source/Core/VideoCommon/Widescreen.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000006 /* XFStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = XFStateManager.cpp; path = dolphin/Source/Core/VideoCommon/XFStateManager.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000007 /* PipelineUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PipelineUtils.cpp; path = dolphin/Source/Core/VideoCommon/PipelineUtils.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000008 /* CPUCull.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPUCull.cpp; path = dolphin/Source/Core/VideoCommon/CPUCull.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000009 /* SWEfbInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SWEfbInterface.cpp; path = dolphin/Source/Core/VideoBackends/Software/SWEfbInterface.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000A /* HSP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HSP.cpp; path = dolphin/Source/Core/Core/HW/HSP/HSP.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000B /* AMMediaboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AMMediaboard.cpp; path = dolphin/Source/Core/Core/HW/DVD/AMMediaboard.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000C /* TimePlayed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TimePlayed.cpp; path = dolphin/Source/Core/Core/TimePlayed.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000D /* WC24PatchEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WC24PatchEngine.cpp; path = dolphin/Source/Core/Core/WC24PatchEngine.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000E /* CPUThreadConfigCallback.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CPUThreadConfigCallback.cpp; path = dolphin/Source/Core/Core/CPUThreadConfigCallback.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000000F /* AesDevice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AesDevice.cpp; path = dolphin/Source/Core/Core/IOS/Crypto/AesDevice.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000010 /* Sha.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Sha.cpp; path = dolphin/Source/Core/Core/IOS/Crypto/Sha.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000011 /* USBScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = USBScanner.cpp; path = dolphin/Source/Core/Core/IOS/USB/USBScanner.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000012 /* WC24Send.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WC24Send.cpp; path = dolphin/Source/Core/Core/IOS/Network/KD/Mail/WC24Send.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000013 /* NWC24DL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NWC24DL.cpp; path = dolphin/Source/Core/Core/IOS/Network/KD/NWC24DL.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000014 /* VFFUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VFFUtil.cpp; path = dolphin/Source/Core/Core/IOS/Network/KD/VFF/VFFUtil.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000015 /* ConstantPropagation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ConstantPropagation.cpp; path = dolphin/Source/Core/Core/PowerPC/JitCommon/ConstantPropagation.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000016 /* DesiredWiimoteState.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = DesiredWiimoteState.cpp; path = dolphin/Source/Core/Core/HW/WiimoteEmu/DesiredWiimoteState.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000017 /* Shinkansen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shinkansen.cpp; path = dolphin/Source/Core/Core/HW/WiimoteEmu/Extension/Shinkansen.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000018 /* EXI_DeviceBaseboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EXI_DeviceBaseboard.cpp; path = dolphin/Source/Core/Core/HW/EXI/EXI_DeviceBaseboard.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF000000000000000019 /* EXI_DeviceModem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EXI_DeviceModem.cpp; path = dolphin/Source/Core/Core/HW/EXI/EXI_DeviceModem.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000001A /* SI_DeviceAMBaseboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SI_DeviceAMBaseboard.cpp; path = dolphin/Source/Core/Core/HW/SI/SI_DeviceAMBaseboard.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000001B /* ASnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ASnd.cpp; path = dolphin/Source/Core/Core/HW/DSPHLE/UCodes/ASnd.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000001C /* AESnd.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AESnd.cpp; path = dolphin/Source/Core/Core/HW/DSPHLE/UCodes/AESnd.cpp; sourceTree = SOURCE_ROOT; };
+		55C0DF00000000000000001D /* IRPassthrough.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IRPassthrough.cpp; path = dolphin/Source/Core/InputCommon/ControllerEmu/ControlGroup/IRPassthrough.cpp; sourceTree = SOURCE_ROOT; };
+		55C0E00000000000000001 /* vquic.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = vquic.c; path = dolphin/Externals/curl/curl/lib/vquic/vquic.c; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4299,7 +4591,14 @@
 		8355D4901A6538FD00E73302 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
-			files = (
+			files = (				55C0E3000000000000000002 /* SystemConfiguration.framework in Frameworks */,
+				55C0E3000000000000000004 /* Security.framework in Frameworks */,
+
+				55C0E400000000000000000A /* liblz4.a in Frameworks */,
+				55C0EA0000000000000002 /* Metal.framework in Frameworks */,
+				55C0EA0000000000000004 /* QuartzCore.framework in Frameworks */,
+				55C0E7000000000000000001 /* libvideometal.a in Frameworks */,
+				55C0E7000000000000000005 /* libresolv.tbd in Frameworks */,
 				5574741F2F64AEDA00F240F0 /* libFatFs.a in Frameworks */,
 				3E3D775B1C840AA000091C4D /* OpenEmuBase.framework in Frameworks */,
 				8355D4FA1A653EF200E73302 /* libiconv.dylib in Frameworks */,
@@ -5069,7 +5368,25 @@
 		};
 		3E3D76B21C839C6F00091C4D /* Source Files */ = {
 			isa = PBXGroup;
-			children = (
+			children = (				0055C0E10000000000000000 /* constant_time.c */,
+				0055C0E10000000000000002 /* mps_reader.c */,
+				0055C0E10000000000000004 /* mps_trace.c */,
+				0055C0E10000000000000006 /* psa_crypto.c */,
+				0055C0E10000000000000008 /* psa_crypto_aead.c */,
+				0055C0E1000000000000000A /* psa_crypto_cipher.c */,
+				0055C0E1000000000000000C /* psa_crypto_client.c */,
+				0055C0E1000000000000000E /* psa_crypto_driver_wrappers.c */,
+				0055C0E10000000000000010 /* psa_crypto_ecp.c */,
+				0055C0E10000000000000012 /* psa_crypto_hash.c */,
+				0055C0E10000000000000014 /* psa_crypto_mac.c */,
+				0055C0E10000000000000016 /* psa_crypto_rsa.c */,
+				0055C0E10000000000000018 /* psa_crypto_se.c */,
+				0055C0E1000000000000001A /* psa_crypto_slot_management.c */,
+				0055C0E1000000000000001C /* psa_crypto_storage.c */,
+				0055C0E1000000000000001E /* psa_its_file.c */,
+				0055C0E10000000000000020 /* ssl_msg.c */,
+				0055C0E10000000000000022 /* ssl_tls13_keys.c */,
+
 				3E3D76B31C839C9500091C4D /* aes.c */,
 				3E3D76B41C839C9500091C4D /* aesni.c */,
 				3E3D76B51C839C9500091C4D /* arc4.c */,
@@ -7441,7 +7758,6 @@
 		55F61C8F2F65349000770D6E /* tiny_watcher */ = {
 			isa = PBXGroup;
 			children = (
-				55F61C8E2F65349000770D6E /* main.cpp */,
 			);
 			path = tiny_watcher;
 			sourceTree = "<group>";
@@ -7449,7 +7765,6 @@
 		55F61C912F65349000770D6E /* watcher */ = {
 			isa = PBXGroup;
 			children = (
-				55F61C902F65349000770D6E /* main.cpp */,
 			);
 			path = watcher;
 			sourceTree = "<group>";
@@ -9166,7 +9481,6 @@
 				558C1A7C2F629F0600E8C92B /* protocol.h in Headers */,
 				558C1A7D2F629F0600E8C92B /* unix.h in Headers */,
 				558C1A7E2F629F0600E8C92B /* win32.h in Headers */,
-				558C1A7F2F629F0600E8C92B /* time.h in Headers */,
 				558C1A802F629F0600E8C92B /* enet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -9329,6 +9643,21 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		55C0E4000000000000000001 /* lz4 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 55C0E4000000000000000002 /* Build configuration list for PBXNativeTarget "lz4" */;
+			buildPhases = (
+				55C0E4000000000000000003 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = lz4;
+			productName = lz4;
+			productReference = 55C0E4000000000000000004 /* liblz4.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		3E2217961D74AB3300C55942 /* Wii */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E22179A1D74AB3300C55942 /* Build configuration list for PBXNativeTarget "Wii" */;
@@ -9578,6 +9907,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				55C0E7000000000000000002 /* PBXTargetDependency */,
+				55C0E4000000000000000005 /* PBXTargetDependency */,
 				5574741E2F64AED200F240F0 /* PBXTargetDependency */,
 				5550902C27FA9E6A00CA618C /* PBXTargetDependency */,
 				5550902E27FA9E6A00CA618C /* PBXTargetDependency */,
@@ -10000,6 +10331,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				55C0E4000000000000000001 /* lz4 */,
 				8355D4921A6538FD00E73302 /* Dolphin */,
 				8355D4D91A653A9D00E73302 /* Build & Install Dolphin */,
 				3E2217961D74AB3300C55942 /* Wii */,
@@ -10081,10 +10413,51 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		26D3EDFE8DE347C59A910717 /* Sources */ = {
+		55C0E4000000000000000003 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C0E4000000000000000009 /* lz4.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26D3EDFE8DE347C59A910717 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (				55C0EB000000000000000004 /* HSP_DeviceNull.cpp in Sources */,
+				55C0E9000000000000000002 /* HSP_DeviceARAMExpansion.cpp in Sources */,
+				55C0E9000000000000000004 /* Microphone.cpp in Sources */,
+				55C0E9000000000000000006 /* SkylanderFigure.cpp in Sources */,
+				55C0E60000000000000002 /* HSP_Device.cpp in Sources */,
+				55C0E60000000000000004 /* TAPServerModem.cpp in Sources */,
+				55C0E60000000000000006 /* WC24FriendList.cpp in Sources */,
+				55C0E60000000000000008 /* Infinity.cpp in Sources */,
+				55C0E6000000000000000A /* LogitechMic.cpp in Sources */,
+				55C0E6000000000000000C /* Skylander.cpp in Sources */,
+				55C0E6000000000000000E /* WiiSpeak.cpp in Sources */,
+				55C0E60000000000000010 /* MagneticCardReader.cpp in Sources */,
+				55C0E60000000000000012 /* C1231BR.cpp in Sources */,
+				55C0E60000000000000014 /* C1231LR.cpp in Sources */,
+
+				55C0DF000000000000001392 /* HSP.cpp in Sources */,
+				55C0DF000000000000001393 /* AMMediaboard.cpp in Sources */,
+				55C0DF000000000000001394 /* TimePlayed.cpp in Sources */,
+				55C0DF000000000000001395 /* WC24PatchEngine.cpp in Sources */,
+				55C0DF000000000000001396 /* CPUThreadConfigCallback.cpp in Sources */,
+				55C0DF000000000000001397 /* AesDevice.cpp in Sources */,
+				55C0DF000000000000001398 /* Sha.cpp in Sources */,
+				55C0DF000000000000001399 /* USBScanner.cpp in Sources */,
+				55C0DF00000000000000139A /* WC24Send.cpp in Sources */,
+				55C0DF00000000000000139B /* NWC24DL.cpp in Sources */,
+				55C0DF00000000000000139C /* VFFUtil.cpp in Sources */,
+				55C0DF00000000000000139D /* ConstantPropagation.cpp in Sources */,
+				55C0DF00000000000000139E /* DesiredWiimoteState.cpp in Sources */,
+				55C0DF00000000000000139F /* Shinkansen.cpp in Sources */,
+				55C0DF0000000000000013A0 /* EXI_DeviceBaseboard.cpp in Sources */,
+				55C0DF0000000000000013A1 /* EXI_DeviceModem.cpp in Sources */,
+				55C0DF0000000000000013A2 /* SI_DeviceAMBaseboard.cpp in Sources */,
+				55C0DF0000000000000013A3 /* ASnd.cpp in Sources */,
+				55C0DF0000000000000013A4 /* AESnd.cpp in Sources */,
 				EE6ABEC0239C78AE005E5F7D /* TitleContents.cpp in Sources */,
 				3E8EC66A1F8434AA00D79F27 /* EXI_DeviceEthernet.cpp in Sources */,
 				EE149BA7205A270F008D5DDE /* DSPJitCCUtil.cpp in Sources */,
@@ -10132,7 +10505,6 @@
 				3E8EC6661F8434AA00D79F27 /* GCMemcardRaw.cpp in Sources */,
 				EE8DD29222493134005E1AF5 /* ExtensionPort.cpp in Sources */,
 				EE6ABEB4239C789E005E5F7D /* SDIOSlot0.cpp in Sources */,
-				5570E9CC2F64E2960043407B /* IPC.cpp in Sources */,
 				5570E9CD2F64E2960043407B /* TAPServerBBA.cpp in Sources */,
 				5570E9CE2F64E2960043407B /* TAPServerConnection.cpp in Sources */,
 				5570E9CF2F64E2960043407B /* BuiltIn.cpp in Sources */,
@@ -10465,7 +10837,25 @@
 		3E3D76A01C839C5400091C4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (
+			files = (				0055C0E10000000000000001 /* constant_time.c in Sources */,
+				0055C0E10000000000000003 /* mps_reader.c in Sources */,
+				0055C0E10000000000000005 /* mps_trace.c in Sources */,
+				0055C0E10000000000000007 /* psa_crypto.c in Sources */,
+				0055C0E10000000000000009 /* psa_crypto_aead.c in Sources */,
+				0055C0E1000000000000000B /* psa_crypto_cipher.c in Sources */,
+				0055C0E1000000000000000D /* psa_crypto_client.c in Sources */,
+				0055C0E1000000000000000F /* psa_crypto_driver_wrappers.c in Sources */,
+				0055C0E10000000000000011 /* psa_crypto_ecp.c in Sources */,
+				0055C0E10000000000000013 /* psa_crypto_hash.c in Sources */,
+				0055C0E10000000000000015 /* psa_crypto_mac.c in Sources */,
+				0055C0E10000000000000017 /* psa_crypto_rsa.c in Sources */,
+				0055C0E10000000000000019 /* psa_crypto_se.c in Sources */,
+				0055C0E1000000000000001B /* psa_crypto_slot_management.c in Sources */,
+				0055C0E1000000000000001D /* psa_crypto_storage.c in Sources */,
+				0055C0E1000000000000001F /* psa_its_file.c in Sources */,
+				0055C0E10000000000000021 /* ssl_msg.c in Sources */,
+				0055C0E10000000000000023 /* ssl_tls13_keys.c in Sources */,
+
 				3E3D77211C839C9600091C4D /* pk.c in Sources */,
 				3E3D77281C839C9600091C4D /* ripemd160.c in Sources */,
 				3E3D771A1C839C9600091C4D /* md5.c in Sources */,
@@ -10551,6 +10941,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C0E00000000000000002 /* vquic.c in Sources */,
+				55C0DE0000000000000003E8 /* altsvc.c in Sources */,
+				55C0DE0000000000000003E9 /* amigaos.c in Sources */,
+				55C0DE0000000000000003EA /* asyn-base.c in Sources */,
+				55C0DE0000000000000003EB /* asyn-thrdd.c in Sources */,
+				55C0DE0000000000000003EC /* bufq.c in Sources */,
+				55C0DE0000000000000003ED /* bufref.c in Sources */,
+				55C0DE0000000000000003EE /* cf-h1-proxy.c in Sources */,
+				55C0DE0000000000000003EF /* cf-h2-proxy.c in Sources */,
+				55C0DE0000000000000003F0 /* cf-haproxy.c in Sources */,
+				55C0DE0000000000000003F1 /* cf-https-connect.c in Sources */,
+				55C0DE0000000000000003F2 /* cf-socket.c in Sources */,
+				55C0DE0000000000000003F3 /* cfilters.c in Sources */,
+				55C0DE0000000000000003F4 /* cshutdn.c in Sources */,
+				55C0DE0000000000000003F5 /* curl_get_line.c in Sources */,
+				55C0DE0000000000000003F6 /* curl_range.c in Sources */,
+				55C0DE0000000000000003F7 /* curl_sha512_256.c in Sources */,
+				55C0DE0000000000000003F8 /* curl_trc.c in Sources */,
+				55C0DE0000000000000003F9 /* cw-out.c in Sources */,
+				55C0DE0000000000000003FA /* cw-pause.c in Sources */,
+				55C0DE0000000000000003FB /* dllmain.c in Sources */,
+				55C0DE0000000000000003FC /* doh.c in Sources */,
+				55C0DE0000000000000003FD /* dynhds.c in Sources */,
+				55C0DE0000000000000003FE /* easygetopt.c in Sources */,
+				55C0DE0000000000000003FF /* easyoptions.c in Sources */,
+				55C0DE000000000000000400 /* fake_addrinfo.c in Sources */,
+				55C0DE000000000000000401 /* fopen.c in Sources */,
+				55C0DE000000000000000402 /* headers.c in Sources */,
+				55C0DE000000000000000403 /* hsts.c in Sources */,
+				55C0DE000000000000000404 /* http1.c in Sources */,
+				55C0DE000000000000000405 /* http_aws_sigv4.c in Sources */,
+				55C0DE000000000000000406 /* httpsrr.c in Sources */,
+				55C0DE000000000000000407 /* idn.c in Sources */,
+				55C0DE000000000000000408 /* macos.c in Sources */,
+				55C0DE000000000000000409 /* mime.c in Sources */,
+				55C0DE00000000000000040A /* mqtt.c in Sources */,
+				55C0DE00000000000000040B /* multi_ev.c in Sources */,
+				55C0DE00000000000000040C /* noproxy.c in Sources */,
+				55C0DE00000000000000040D /* psl.c in Sources */,
+				55C0DE00000000000000040E /* rand.c in Sources */,
+				55C0DE00000000000000040F /* rename.c in Sources */,
+				55C0DE000000000000000410 /* request.c in Sources */,
+				55C0DE000000000000000411 /* setopt.c in Sources */,
+				55C0DE000000000000000412 /* sha256.c in Sources */,
+				55C0DE000000000000000413 /* socketpair.c in Sources */,
+				55C0DE000000000000000414 /* strcase.c in Sources */,
+				55C0DE000000000000000415 /* uint-bset.c in Sources */,
+				55C0DE000000000000000416 /* uint-hash.c in Sources */,
+				55C0DE000000000000000417 /* uint-spbset.c in Sources */,
+				55C0DE000000000000000418 /* uint-table.c in Sources */,
+				55C0DE000000000000000419 /* urlapi.c in Sources */,
+				55C0DE00000000000000041A /* ws.c in Sources */,
 				3E8D2AA51D21E54B0086BA59 /* smb.c in Sources */,
 				3E8D2A821D21E54B0086BA59 /* krb5.c in Sources */,
 				3E8D2AA21D21E54B0086BA59 /* sendf.c in Sources */,
@@ -10692,6 +11134,7 @@
 				3EFF278B1F84621200B4FD11 /* cubeb.c in Sources */,
 				3EFF278F1F84621200B4FD11 /* cubeb_mixer.cpp in Sources */,
 				3EFF27901F84621200B4FD11 /* cubeb_resampler.cpp in Sources */,
+				5570E9D22F65A0000043407B /* resample.c in Sources */,
 				3EFF27911F84621200B4FD11 /* cubeb_log.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -10794,6 +11237,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C0E8000000000000000004 /* spirv_cfg.cpp in Sources */,
+				55C0E8000000000000000006 /* spirv_cpp.cpp in Sources */,
+				55C0E8000000000000000008 /* spirv_cross.cpp in Sources */,
+				55C0E800000000000000000A /* spirv_cross_c.cpp in Sources */,
+				55C0E800000000000000000C /* spirv_cross_parsed_ir.cpp in Sources */,
+				55C0E800000000000000000E /* spirv_cross_util.cpp in Sources */,
+				55C0E8000000000000000010 /* spirv_glsl.cpp in Sources */,
+				55C0E8000000000000000012 /* spirv_hlsl.cpp in Sources */,
+				55C0E8000000000000000014 /* spirv_msl.cpp in Sources */,
+				55C0E8000000000000000016 /* spirv_parser.cpp in Sources */,
+				55C0E8000000000000000018 /* spirv_reflect.cpp in Sources */,
+
 				5574743B2F64AF1300F240F0 /* MTLGfx.mm in Sources */,
 				5574743C2F64AF1300F240F0 /* MTLBoundingBox.mm in Sources */,
 				5574743D2F64AF1300F240F0 /* MTLShader.mm in Sources */,
@@ -10813,6 +11268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C0DF0000000000000013A5 /* IRPassthrough.cpp in Sources */,
 				EE6ABE73239C3773005E5F7D /* Quartz.mm in Sources */,
 				EE6ABE79239C7116005E5F7D /* DualShockUDPClient.cpp in Sources */,
 				EE6ABE43239C36AD005E5F7D /* ModifySettingsButton.cpp in Sources */,
@@ -10933,7 +11389,19 @@
 		8A01E94652C8430CB82B170C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (
+			files = (				55C0E9000000000000000008 /* Spirv.cpp in Sources */,
+				55C0E60000000000000016 /* PerformanceTracker.cpp in Sources */,
+				55C0E60000000000000018 /* OnScreenUI.cpp in Sources */,
+
+				55C0DF000000000000001388 /* EFBInterface.cpp in Sources */,
+				55C0DF000000000000001389 /* FrameDumper.cpp in Sources */,
+				55C0DF00000000000000138A /* PerformanceMetrics.cpp in Sources */,
+				55C0DF00000000000000138B /* Present.cpp in Sources */,
+				55C0DF00000000000000138C /* TextureUtils.cpp in Sources */,
+				55C0DF00000000000000138D /* Widescreen.cpp in Sources */,
+				55C0DF00000000000000138E /* XFStateManager.cpp in Sources */,
+				55C0DF00000000000000138F /* PipelineUtils.cpp in Sources */,
+				55C0DF000000000000001390 /* CPUCull.cpp in Sources */,
 				5550902A27FA98F700CA618C /* TextureInfo.cpp in Sources */,
 				3E0A56EE1FAF7EDC00D755B8 /* VideoConfig.cpp in Sources */,
 				3E3D75EF1C82B2DE00091C4D /* BPMemory.cpp in Sources */,
@@ -11040,6 +11508,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C0DF000000000000001391 /* SWEfbInterface.cpp in Sources */,
 				3EFF29251F85611300B4FD11 /* SWTexture.cpp in Sources */,
 				3E3D76711C82B33700091C4D /* TextureEncoder.cpp in Sources */,
 				3E3D766A1C82B33700091C4D /* Rasterizer.cpp in Sources */,
@@ -11162,7 +11631,9 @@
 		EE8DD26B22492AAB005E1AF5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (
+			files = (				55C0E900000000000000000A /* implot.cpp in Sources */,
+				55C0E900000000000000000C /* implot_items.cpp in Sources */,
+
 				EE3EC3ED224A819A00BA7436 /* imgui_draw.cpp in Sources */,
 				EE8DD27322492AD8005E1AF5 /* imgui.cpp in Sources */,
 				5550902727FA989A00CA618C /* imgui_tables.cpp in Sources */,
@@ -11298,7 +11769,8 @@
 		EEF4EED1224AAF5D0077748D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
-			files = (
+			files = (				55C0EB000000000000000002 /* SpirvIntrinsics.cpp in Sources */,
+
 				EEF4EEEF224AAFB50077748D /* propagateNoContraction.cpp in Sources */,
 				EEF4EEF7224AAFB50077748D /* iomapper.cpp in Sources */,
 				EEF4EEFD224AAFB50077748D /* attribute.cpp in Sources */,
@@ -11309,7 +11781,6 @@
 				EEF4EEF6224AAFB50077748D /* intermOut.cpp in Sources */,
 				EEF4EF05224AAFC00077748D /* Pp.cpp in Sources */,
 				EEF4EF0A224AAFCB0077748D /* Link.cpp in Sources */,
-				EE98BE0624B8E13D00FFFDD7 /* StandAlone.cpp in Sources */,
 				EEF4EF02224AAFB50077748D /* linkValidate.cpp in Sources */,
 				EEF4EEF4224AAFB50077748D /* parseConst.cpp in Sources */,
 				EEF4EEFE224AAFB50077748D /* reflection.cpp in Sources */,
@@ -11336,6 +11807,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55C0E7000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 557474082F64AEBB00F240F0 /* videometal */;
+			targetProxy = 55C0E7000000000000000003 /* PBXContainerItemProxy */;
+		};
+		55C0E4000000000000000005 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 55C0E4000000000000000001 /* lz4 */;
+			targetProxy = 55C0E4000000000000000006 /* PBXContainerItemProxy */;
+		};
 		5550902C27FA9E6A00CA618C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EE8DD2D7224A7F04005E1AF5 /* FreeSurround */;
@@ -11534,6 +12015,69 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		55C0E4000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"XXH_NAMESPACE=LZ4_",
+				);
+				HEADER_SEARCH_PATHS = $SRCROOT/dolphin/Externals/lz4/lz4/lib;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-Wall",
+					"-fno-strict-aliasing",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Debug;
+		};
+		55C0E4000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				EXECUTABLE_PREFIX = lib;
+				EXECUTABLE_SUFFIX = .a;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"XXH_NAMESPACE=LZ4_",
+				);
+				HEADER_SEARCH_PATHS = $SRCROOT/dolphin/Externals/lz4/lz4/lib;
+				INSTALL_PATH = "";
+				LIBRARY_STYLE = STATIC;
+				OTHER_CFLAGS = (
+					"-DNDEBUG",
+					"-Wall",
+					"-fno-strict-aliasing",
+				);
+				OTHER_REZFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SECTORDER_FLAGS = "";
+				USE_HEADERMAP = NO;
+				WARNING_CFLAGS = (
+					"-Wmost",
+					"-Wno-four-char-constants",
+					"-Wno-unknown-pragmas",
+				);
+			};
+			name = Release;
+		};
 		15FA53E6E93B41BBAED4E9D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -11548,6 +12092,7 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -12087,6 +12632,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/dolphin",
 					$SRCROOT/dolphin/Externals/mbedtls/include,
+					$SRCROOT/dolphin/Externals/mbedtls/library,
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)-dol";
@@ -12129,6 +12675,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/dolphin",
 					$SRCROOT/dolphin/Externals/mbedtls/include,
+					$SRCROOT/dolphin/Externals/mbedtls/library,
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)-dol";
@@ -12786,6 +13333,7 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -12848,6 +13396,7 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -13049,11 +13598,13 @@
 					$SRCROOT/dolphin/Externals/SOIL,
 					$SRCROOT/dolphin/Externals/xxhash/xxHash,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					$SRCROOT/dolphin/Externals/SFML/SFML/include,
 					$SRCROOT/dolphin/Externals/enet/enet/include,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
 					$SRCROOT/dolphin/Externals/picojson,
 					$SRCROOT/dolphin/Externals/glslang/glslang,
+					$SRCROOT/dolphin/Externals/glslang,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -13224,6 +13775,8 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
+					$SRCROOT/dolphin/Externals/glslang/glslang,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -13285,6 +13838,8 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
+					$SRCROOT/dolphin/Externals/glslang/glslang,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -13519,6 +14074,7 @@
 					$SRCROOT/Compatibility/Input,
 					$SRCROOT,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Externals/SFML/SFML/include,
@@ -14162,6 +14718,7 @@
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_STYLE = STATIC;
@@ -14299,6 +14856,7 @@
 					$SRCROOT/Compatibility/Input,
 					$SRCROOT,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					$SRCROOT/dolphin/Source/Core/Common/Compat,
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Externals/SFML/SFML/include,
@@ -15012,11 +15570,13 @@
 					$SRCROOT/dolphin/Externals/SOIL,
 					$SRCROOT/dolphin/Externals/xxhash/xxHash,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					$SRCROOT/dolphin/Externals/SFML/SFML/include,
 					$SRCROOT/dolphin/Externals/enet/enet/include,
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
 					$SRCROOT/dolphin/Externals/picojson,
 					$SRCROOT/dolphin/Externals/glslang/glslang,
+					$SRCROOT/dolphin/Externals/glslang,
 				);
 				INSTALL_PATH = "";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -15108,6 +15668,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/dolphin",
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)-dol";
@@ -15151,6 +15712,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/dolphin",
 					$SRCROOT/dolphin/Externals/fmt/fmt/include,
+					$SRCROOT/dolphin/Externals/spirv_cross/SPIRV-Cross,
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)-dol";
@@ -15476,6 +16038,7 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					"\"$(SRCROOT)/dolphin/Externals/fmt/fmt/include\"",
 				);
 				INSTALL_PATH = "";
@@ -15537,6 +16100,7 @@
 				HEADER_SEARCH_PATHS = (
 					$SRCROOT/dolphin/Source/Core,
 					$SRCROOT/dolphin/Externals/imgui/imgui,
+					$SRCROOT/dolphin/Externals/implot/implot,
 					"\"$(SRCROOT)/dolphin/Externals/fmt/fmt/include\"",
 				);
 				INSTALL_PATH = "";
@@ -16375,6 +16939,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		55C0E4000000000000000002 /* Build configuration list for PBXNativeTarget "lz4" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				55C0E4000000000000000007 /* Debug */,
+				55C0E4000000000000000008 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1C98FC3ADCFA4A4FBD16DA58 /* Build configuration list for PBXNativeTarget "Core" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
