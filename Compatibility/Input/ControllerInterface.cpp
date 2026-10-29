@@ -4,16 +4,42 @@
 
 #include "InputCommon/ControllerInterface/ControllerInterface.h"
 
-//OpenEmu undefine the OSX settings
+// OpenEmu supplies input through its own frontend callbacks, so none of Dolphin's
+// native input backends are used. They are disabled here rather than in the shared
+// header so the rest of Dolphin keeps seeing the same configuration.
+#ifdef CIFACE_USE_WIN32
+#undef CIFACE_USE_WIN32
+#endif
+#ifdef CIFACE_USE_XLIB
+#undef CIFACE_USE_XLIB
+#endif
 #ifdef CIFACE_USE_OSX
 #undef CIFACE_USE_OSX
 #endif
+#ifdef CIFACE_USE_SDL
+#undef CIFACE_USE_SDL
+#endif
+#ifdef CIFACE_USE_ANDROID
+#undef CIFACE_USE_ANDROID
+#endif
+#ifdef CIFACE_USE_EVDEV
+#undef CIFACE_USE_EVDEV
+#endif
+#ifdef CIFACE_USE_PIPES
+#undef CIFACE_USE_PIPES
+#endif
+#ifdef CIFACE_USE_DUALSHOCKUDPCLIENT
+#undef CIFACE_USE_DUALSHOCKUDPCLIENT
+#endif
+#ifdef CIFACE_USE_STEAMDECK
+#undef CIFACE_USE_STEAMDECK
+#endif
 
-//OpenEmu include OE input header
 #include "OpenEmuInput.h"
 
 #include <algorithm>
 
+#include "Common/Assert.h"
 #include "Common/Logging/Log.h"
 #include "Core/HW/WiimoteReal/WiimoteReal.h"
 
@@ -24,7 +50,6 @@
 #include "InputCommon/ControllerInterface/Xlib/XInput2.h"
 #endif
 #ifdef CIFACE_USE_OSX
-#include "InputCommon/ControllerInterface/OSX/OSX.h"
 #include "InputCommon/ControllerInterface/Quartz/Quartz.h"
 #endif
 #ifdef CIFACE_USE_SDL
@@ -42,68 +67,89 @@
 #ifdef CIFACE_USE_DUALSHOCKUDPCLIENT
 #include "InputCommon/ControllerInterface/DualShockUDPClient/DualShockUDPClient.h"
 #endif
+#ifdef CIFACE_USE_STEAMDECK
+#include "InputCommon/ControllerInterface/SteamDeck/SteamDeck.h"
+#endif
 
 ControllerInterface g_controller_interface;
-static bool m_is_populating_devices = false;
+
+// We need to save which input channel we are in by thread, so we can access the correct input
+// update values in different threads by input channel. We start from InputChannel::Host on all
+// threads as hotkeys are updated from a worker thread, but UI can read from the main thread. This
+// will never interfere with game threads.
+static thread_local ciface::InputChannel tls_input_channel = ciface::InputChannel::Host;
+
+static thread_local bool tls_is_updating_devices = false;
 
 void ControllerInterface::Initialize(const WindowSystemInfo& wsi)
 {
   if (m_is_init)
     return;
 
+  std::lock_guard lk_population(m_devices_population_mutex);
+
   m_wsi = wsi;
 
-  // Allow backends to add devices as soon as they are initialized.
+  // OpenEmu: no native input backends are registered. The caller (DolHost) adds the OpenEmu
+  // devices through Input::Openemu_Input_Init() right after this returns; it must not be called
+  // from here as well, or the pads and the keyboard device would be initialized twice.
+
+  // Don't allow devices to be added before the first RefreshDevices() as they would be cleaned
+  // there. Or they'd end up waiting on the devices mutex if populated from another thread.
   m_is_init = true;
 
-  m_is_populating_devices = true;
-
-#ifdef CIFACE_USE_WIN32
-  ciface::Win32::Init(wsi.render_window);
-#endif
-#ifdef CIFACE_USE_XLIB
-// nothing needed
-#endif
-#ifdef CIFACE_USE_OSX
-  if (m_wsi.type == WindowSystemType::MacOS)
-    ciface::OSX::Init(wsi.render_window);
-// nothing needed for Quartz
-#endif
-#ifdef CIFACE_USE_SDL
-  ciface::SDL::Init();
-#endif
-#ifdef CIFACE_USE_ANDROID
-// nothing needed
-#endif
-#ifdef CIFACE_USE_EVDEV
-  ciface::evdev::Init();
-#endif
-#ifdef CIFACE_USE_PIPES
-// nothing needed
-#endif
-#ifdef CIFACE_USE_DUALSHOCKUDPCLIENT
-  ciface::DualShockUDPClient::Init();
-#endif
-
-    //OpenEmu initalize OpenEmu Input
-    Input::Openemu_Input_Init();
-    
   RefreshDevices();
-    
-    //OpenEmu set populating devices to false
-    m_is_populating_devices = false;
+
+  // Devices writes are already protected by m_devices_population_mutex but this won't hurt
+  m_devices_mutex.lock();
+  const bool devices_empty = m_devices.empty();
+  m_devices_mutex.unlock();
+
+  if (m_populating_devices_counter.fetch_sub(1) == 1 && !devices_empty)
+    InvokeDevicesChangedCallbacks();
 }
 
-static thread_local ciface::InputChannel tls_input_channel = ciface::InputChannel::Host;
-
-void ControllerInterface::SetCurrentInputChannel(ciface::InputChannel input_channel)
+void ControllerInterface::ChangeWindow(void* hwnd, WindowChangeReason reason)
 {
-  tls_input_channel = input_channel;
+  if (!m_is_init)
+    return;
+
+  // This shouldn't use render_surface so no need to update it.
+  m_wsi.render_window = hwnd;
+
+  // No need to re-add devices if this is an application exit request
+  if (reason == WindowChangeReason::Exit)
+    ClearDevices();
+  else
+    RefreshDevices(RefreshReason::WindowChangeOnly);
 }
 
-ciface::InputChannel ControllerInterface::GetCurrentInputChannel()
+void ControllerInterface::RefreshDevices(RefreshReason reason)
 {
-  return tls_input_channel;
+  if (!m_is_init)
+    return;
+
+  std::lock_guard lk_population(m_devices_population_mutex);
+
+  // OpenEmu: m_devices is deliberately not cleared here. The OpenEmu devices are added once by
+  // Input::Openemu_Input_Init() and re-created by the frontend whenever a port changes its
+  // controller type, so clearing them would drop all input until the next port change.
+  if (reason == RefreshReason::WindowChangeOnly)
+  {
+    m_populating_devices_counter.fetch_add(1);
+
+    if (m_populating_devices_counter.fetch_sub(1) == 1)
+      InvokeDevicesChangedCallbacks();
+
+    return;
+  }
+
+  m_populating_devices_counter.fetch_add(1);
+
+  WiimoteReal::PopulateDevices();
+
+  if (m_populating_devices_counter.fetch_sub(1) == 1)
+    InvokeDevicesChangedCallbacks();
 }
 
 void ControllerInterface::PlatformPopulateDevices(std::function<void()> callback)
@@ -121,68 +167,6 @@ void ControllerInterface::PlatformPopulateDevices(std::function<void()> callback
     InvokeDevicesChangedCallbacks();
 }
 
-void ControllerInterface::ChangeWindow(void* hwnd, WindowChangeReason reason)
-{
-  if (!m_is_init)
-    return;
-
-  // This shouldn't use render_surface so no need to update it.
-  m_wsi.render_window = hwnd;
-  RefreshDevices();
-}
-
-void ControllerInterface::RefreshDevices(RefreshReason reason)
-{
-  if (!m_is_init)
-    return;
-
-  //OpenEmu comment out this section so we can maintain our controller input
-//  {
-//    std::lock_guard lk(m_devices_mutex);
-//    m_devices.clear();
-//  }
-
-  m_is_populating_devices = true;
-
-  // Make sure shared_ptr<Device> objects are released before repopulating.
-  InvokeDevicesChangedCallbacks();
-
-#ifdef CIFACE_USE_WIN32
-  ciface::Win32::PopulateDevices(m_wsi.render_window);
-#endif
-#ifdef CIFACE_USE_XLIB
-  if (m_wsi.type == WindowSystemType::X11)
-    ciface::XInput2::PopulateDevices(m_wsi.render_window);
-#endif
-#ifdef CIFACE_USE_OSX
-  if (m_wsi.type == WindowSystemType::MacOS)
-  {
-    ciface::OSX::PopulateDevices(m_wsi.render_window);
-    ciface::Quartz::PopulateDevices(m_wsi.render_window);
-  }
-#endif
-#ifdef CIFACE_USE_SDL
-  ciface::SDL::PopulateDevices();
-#endif
-#ifdef CIFACE_USE_ANDROID
-  ciface::Android::PopulateDevices();
-#endif
-#ifdef CIFACE_USE_EVDEV
-  ciface::evdev::PopulateDevices();
-#endif
-#ifdef CIFACE_USE_PIPES
-  ciface::Pipes::PopulateDevices();
-#endif
-#ifdef CIFACE_USE_DUALSHOCKUDPCLIENT
-  ciface::DualShockUDPClient::PopulateDevices();
-#endif
-
-  WiimoteReal::ProcessWiimotePool();
-
-  m_is_populating_devices = false;
-  InvokeDevicesChangedCallbacks();
-}
-
 // Remove all devices and call library cleanup functions
 void ControllerInterface::Shutdown()
 {
@@ -191,9 +175,33 @@ void ControllerInterface::Shutdown()
 
   // Prevent additional devices from being added during shutdown.
   m_is_init = false;
+  // Additional safety measure to avoid InvokeDevicesChangedCallbacks()
+  m_populating_devices_counter = 1;
+
+  // Update control references so shared_ptr<Device>s are freed up BEFORE we shutdown the backends.
+  ClearDevices();
+
+  // Empty the container of input backends to deconstruct and deinitialize them.
+  m_input_backends.clear();
+
+  // Make sure no devices had been added within Shutdown() in the time
+  // between checking they checked atomic m_is_init bool and we changed it.
+  // We couldn't have locked m_devices_population_mutex for the whole Shutdown()
+  // as it could cause deadlocks. Note that this is still not 100% safe as some backends are
+  // shut down in other places, possibly adding devices after we have shut down, but the chances of
+  // that happening are basically zero.
+  ClearDevices();
+}
+
+void ControllerInterface::ClearDevices()
+{
+  std::lock_guard lk_population(m_devices_population_mutex);
 
   {
     std::lock_guard lk(m_devices_mutex);
+
+    if (m_devices.empty())
+      return;
 
     for (const auto& d : m_devices)
     {
@@ -202,35 +210,12 @@ void ControllerInterface::Shutdown()
         o->SetState(0);
     }
 
+    // Devices could still be alive after this as there might be shared ptrs around holding them.
+    // The InvokeDevicesChangedCallbacks() underneath should always clean all of them (it needs to).
     m_devices.clear();
   }
 
-  // This will update control references so shared_ptr<Device>s are freed up
-  // BEFORE we shutdown the backends.
   InvokeDevicesChangedCallbacks();
-
-#ifdef CIFACE_USE_WIN32
-  ciface::Win32::DeInit();
-#endif
-#ifdef CIFACE_USE_XLIB
-// nothing needed
-#endif
-#ifdef CIFACE_USE_OSX
-  ciface::OSX::DeInit();
-  ciface::Quartz::DeInit();
-#endif
-#ifdef CIFACE_USE_SDL
-  ciface::SDL::DeInit();
-#endif
-#ifdef CIFACE_USE_ANDROID
-// nothing needed
-#endif
-#ifdef CIFACE_USE_EVDEV
-  ciface::evdev::Shutdown();
-#endif
-#ifdef CIFACE_USE_DUALSHOCKUDPCLIENT
-  ciface::DualShockUDPClient::DeInit();
-#endif
 }
 
 bool ControllerInterface::AddDevice(std::shared_ptr<ciface::Core::Device> device)
@@ -239,11 +224,17 @@ bool ControllerInterface::AddDevice(std::shared_ptr<ciface::Core::Device> device
   if (!m_is_init)
     return false;
 
+  ASSERT_MSG(CONTROLLERINTERFACE, !tls_is_updating_devices,
+             "Devices shouldn't be added within input update calls, there is a risk of deadlock "
+             "if another thread was already here");
+
+  std::lock_guard lk_population(m_devices_population_mutex);
+
   {
     std::lock_guard lk(m_devices_mutex);
 
     const auto is_id_in_use = [&device, this](int id) {
-      return std::any_of(m_devices.begin(), m_devices.end(), [&device, &id](const auto& d) {
+      return std::ranges::any_of(m_devices, [&device, &id](const auto& d) {
         return d->GetSource() == device->GetSource() && d->GetName() == device->GetName() &&
                d->GetId() == id;
       });
@@ -265,44 +256,119 @@ bool ControllerInterface::AddDevice(std::shared_ptr<ciface::Core::Device> device
       device->SetId(id);
     }
 
-    NOTICE_LOG(SERIALINTERFACE, "Added device: %s", device->GetQualifiedName().c_str());
+    NOTICE_LOG_FMT(CONTROLLERINTERFACE, "Added device: {}", device->GetQualifiedName());
     m_devices.emplace_back(std::move(device));
+
+    // We can't (and don't want) to control the order in which devices are added, but we need
+    // their order to be consistent, and we need the same one to always be the first, where present
+    // (the keyboard and mouse device usually). This is because when defaulting a controller
+    // profile, it will automatically select the first device in the list as its default. It would
+    // be nice to sort devices by Source then Name then ID, but it's better to leave them sorted by
+    // the add order. This also avoids breaking the order on other platforms that are less tested.
+    std::ranges::stable_sort(m_devices, std::ranges::greater{},
+                             &ciface::Core::Device::GetSortPriority);
   }
 
-  if (!m_is_populating_devices)
+  if (!m_populating_devices_counter)
     InvokeDevicesChangedCallbacks();
   return true;
 }
 
-void ControllerInterface::RemoveDevice(std::function<bool(const ciface::Core::Device*)> callback, bool force_devices_release)
+void ControllerInterface::RemoveDevice(std::function<bool(const ciface::Core::Device*)> callback,
+                                       bool force_devices_release)
 {
+  // If we are shutdown (or in process of shutting down) ignore this request:
+  if (!m_is_init)
+    return;
+
+  ASSERT_MSG(CONTROLLERINTERFACE, !tls_is_updating_devices,
+             "Devices shouldn't be removed within input update calls, there is a risk of deadlock "
+             "if another thread was already here");
+
+  std::lock_guard lk_population(m_devices_population_mutex);
+
+  bool any_removed;
   {
     std::lock_guard lk(m_devices_mutex);
-    auto it = std::remove_if(m_devices.begin(), m_devices.end(), [&callback](const auto& dev) {
+    const size_t erased = std::erase_if(m_devices, [&callback](const auto& dev) {
       if (callback(dev.get()))
       {
-        NOTICE_LOG(SERIALINTERFACE, "Removed device: %s", dev->GetQualifiedName().c_str());
+        NOTICE_LOG_FMT(CONTROLLERINTERFACE, "Removed device: {}", dev->GetQualifiedName());
         return true;
       }
       return false;
     });
-    m_devices.erase(it, m_devices.end());
+    any_removed = erased != 0;
   }
 
-  if (!m_is_populating_devices)
+  if (any_removed && (!m_populating_devices_counter || force_devices_release))
     InvokeDevicesChangedCallbacks();
 }
 
 // Update input for all devices if lock can be acquired without waiting.
 void ControllerInterface::UpdateInput()
 {
-  // Don't block the UI or CPU thread (to avoid a short but noticeable frame drop)
-  if (m_devices_mutex.try_lock())
+  // This should never happen
+  ASSERT(m_is_init);
+  if (!m_is_init)
+    return;
+
+  // We add the devices to remove while we still have the "m_devices_mutex" locked.
+  // This guarantees that:
+  // -We won't try to lock "m_devices_population_mutex" while it was already locked and waiting
+  //  for "m_devices_mutex", which would result in dead lock.
+  // -We don't keep shared ptrs on devices and thus unwillingly keep them alive even if somebody
+  //  is currently trying to remove them (and needs them destroyed on the spot).
+  // -If somebody else destroyed them in the meantime, we'll know which ones have been destroyed.
+  std::vector<std::weak_ptr<ciface::Core::Device>> devices_to_remove;
+
   {
-    std::lock_guard lk(m_devices_mutex, std::adopt_lock);
+    // TODO: if we are an emulation input channel, we should probably always lock.
+    // Prefer outdated values over blocking UI or CPU thread (this avoids short but noticeable frame
+    // drops)
+    if (!m_devices_mutex.try_lock())
+      return;
+
+    std::lock_guard lk_devices(m_devices_mutex, std::adopt_lock);
+
+    tls_is_updating_devices = true;
+
+    for (auto& backend : m_input_backends)
+      backend->UpdateInput(devices_to_remove);
+
     for (const auto& d : m_devices)
-      d->UpdateInput();
+    {
+      // Theoretically we could avoid updating input on devices that don't have any references to
+      // them, but in practice a few devices types could break in different ways, so we don't
+      if (d->UpdateInput() == ciface::Core::DeviceRemoval::Remove)
+        devices_to_remove.push_back(d);
+    }
+
+    tls_is_updating_devices = false;
   }
+
+  if (devices_to_remove.size() > 0)
+  {
+    RemoveDevice([&](const ciface::Core::Device* device) {
+      return std::ranges::any_of(devices_to_remove,
+                                 [device](const auto& d) { return d.lock().get() == device; });
+    });
+  }
+}
+
+void ControllerInterface::SetCurrentInputChannel(ciface::InputChannel input_channel)
+{
+  tls_input_channel = input_channel;
+}
+
+ciface::InputChannel ControllerInterface::GetCurrentInputChannel()
+{
+  return tls_input_channel;
+}
+
+WindowSystemInfo ControllerInterface::GetWindowSystemInfo() const
+{
+  return m_wsi;
 }
 
 void ControllerInterface::SetAspectRatioAdjustment(float value)
@@ -320,28 +386,27 @@ Common::Vec2 ControllerInterface::GetWindowInputScale() const
     return {1 / ar, 1.f};
 }
 
+void ControllerInterface::SetMouseCenteringRequested(bool center)
+{
+  m_requested_mouse_centering = center;
+}
+
+bool ControllerInterface::IsMouseCenteringRequested() const
+{
+  return m_requested_mouse_centering.load();
+}
+
 // Register a callback to be called when a device is added or removed (as from the input backends'
 // hotplug thread), or when devices are refreshed
 // Returns a handle for later removing the callback.
-ControllerInterface::HotplugCallbackHandle
-ControllerInterface::RegisterDevicesChangedCallback(std::function<void()> callback)
+Common::EventHook
+ControllerInterface::RegisterDevicesChangedCallback(Common::HookableEvent<>::CallbackType callback)
 {
-  std::lock_guard<std::mutex> lk(m_callbacks_mutex);
-  m_devices_changed_callbacks.emplace_back(std::move(callback));
-  return std::prev(m_devices_changed_callbacks.end());
-}
-
-// Unregister a device callback.
-void ControllerInterface::UnregisterDevicesChangedCallback(const HotplugCallbackHandle& handle)
-{
-  std::lock_guard<std::mutex> lk(m_callbacks_mutex);
-  m_devices_changed_callbacks.erase(handle);
+  return m_devices_changed_event.Register(std::move(callback));
 }
 
 // Invoke all callbacks that were registered
-void ControllerInterface::InvokeDevicesChangedCallbacks() const
+void ControllerInterface::InvokeDevicesChangedCallbacks()
 {
-  std::lock_guard<std::mutex> lk(m_callbacks_mutex);
-  for (const auto& callback : m_devices_changed_callbacks)
-    callback();
+  m_devices_changed_event.Trigger();
 }

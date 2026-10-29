@@ -19,24 +19,26 @@
 #include "InputCommon/InputProfile.h"
 
 InputConfig::InputConfig(const std::string& ini_name, const std::string& gui_name,
-                         const std::string& profile_name)
-    : m_ini_name(ini_name), m_gui_name(gui_name), m_profile_name(profile_name)
+                         const std::string& profile_directory_name, const std::string& profile_key)
+    : m_ini_name(ini_name), m_gui_name(gui_name), m_profile_directory_name(profile_directory_name),
+      m_profile_key(profile_key)
 {
 }
 
 InputConfig::~InputConfig() = default;
 
-bool InputConfig::LoadConfig(InputClass type)
+bool InputConfig::LoadConfig()
 {
-        //OpenEmu Stub
-        return false;
+  // OpenEmu supplies the controller bindings itself, so there is nothing to
+  // read back from Dolphin's INI files here.
+  return false;
 }
 
 void InputConfig::SaveConfig()
 {
   std::string ini_filename = File::GetUserPath(D_CONFIG_IDX) + m_ini_name + ".ini";
 
-  IniFile inifile;
+  Common::IniFile inifile;
   inifile.Load(ini_filename);
 
   for (auto& controller : m_controllers)
@@ -48,6 +50,30 @@ void InputConfig::SaveConfig()
 ControllerEmu::EmulatedController* InputConfig::GetController(int index) const
 {
   return m_controllers.at(index).get();
+}
+
+void InputConfig::GenerateControllerTextures(const Common::IniFile& file)
+{
+  m_dynamic_input_tex_config_manager.Load();
+
+  std::vector<std::string> controller_names;
+  for (auto& controller : m_controllers)
+    controller_names.push_back(controller->GetName());
+
+  m_dynamic_input_tex_config_manager.GenerateTextures(file, controller_names);
+}
+
+void InputConfig::GenerateControllerTextures()
+{
+  const std::string ini_filename = File::GetUserPath(D_CONFIG_IDX) + m_ini_name + ".ini";
+
+  Common::IniFile inifile;
+  inifile.Load(ini_filename);
+
+  for (auto& controller : m_controllers)
+    controller->SaveConfig(inifile.GetOrCreateSection(controller->GetName()));
+
+  GenerateControllerTextures(inifile);
 }
 
 void InputConfig::ClearControllers()
@@ -69,7 +95,7 @@ void InputConfig::RegisterHotplugCallback()
 {
   // Update control references on all controllers
   // as configured devices may have been added or removed.
-  m_hotplug_callback_handle = g_controller_interface.RegisterDevicesChangedCallback([this] {
+  m_hotplug_event_hook = g_controller_interface.RegisterDevicesChangedCallback([this] {
     for (auto& controller : m_controllers)
       controller->UpdateReferences(g_controller_interface);
   });
@@ -77,7 +103,7 @@ void InputConfig::RegisterHotplugCallback()
 
 void InputConfig::UnregisterHotplugCallback()
 {
-  g_controller_interface.UnregisterDevicesChangedCallback(m_hotplug_callback_handle);
+  m_hotplug_event_hook.reset();
 }
 
 bool InputConfig::IsControllerControlledByGamepadDevice(int index) const

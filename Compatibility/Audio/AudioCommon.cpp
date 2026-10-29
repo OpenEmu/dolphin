@@ -1,192 +1,241 @@
 // Copyright 2009 Dolphin Emulator Project
-// Licensed under GPLv2+
-// Refer to the license.txt file included.
+// SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "AudioCommon/AudioCommon.h"
+
+#include <fmt/chrono.h>
+#include <fmt/format.h>
+
+#include "AudioCommon/AlsaSoundStream.h"
+#include "AudioCommon/CubebStream.h"
 #include "AudioCommon/Mixer.h"
 #include "AudioCommon/NullSoundStream.h"
 #include "OpenEmuAudioStream.h"
-#include "Common/Common.h"
+#include "AudioCommon/NullSoundStream.h"
 #include "Common/FileUtil.h"
 #include "Common/Logging/Log.h"
+#include "Common/TimeUtil.h"
 #include "Core/Config/MainSettings.h"
 #include "Core/ConfigManager.h"
-
-// This shouldn't be a global, at least not here.
-std::unique_ptr<SoundStream> g_sound_stream;
-
-static bool s_audio_dump_start = false;
-static bool s_sound_stream_running = false;
+#include "Core/System.h"
 
 namespace AudioCommon
 {
-    static const int AUDIO_VOLUME_MIN = 0;
-    static const int AUDIO_VOLUME_MAX = 100;
-    
-    void InitSoundStream()
-    {
-        g_sound_stream = std::make_unique<OpenEmuAudioStream>();
-        
-        if (!g_sound_stream->Init())
-        {
-            WARN_LOG(AUDIO, "Could not initialize backend");
-            g_sound_stream = std::make_unique<NullSound>();
-        }
-        
-        UpdateSoundStream();
-        SetSoundStreamRunning(true);
-    }
-    
-    void PostInitSoundStream()
-    {
-        // This needs to be called after AudioInterface::Init and SerialInterface::Init (for GBA devices)
-        // where input sample rates are set
-        UpdateSoundStream();
-        SetSoundStreamRunning(true);
-        
-        if (Config::Get(Config::MAIN_DUMP_AUDIO) && !s_audio_dump_start)
-            StartAudioDump();
-    }
+constexpr int AUDIO_VOLUME_MIN = 0;
+constexpr int AUDIO_VOLUME_MAX = 100;
 
-    void ShutdownSoundStream()
-    {
-        INFO_LOG(AUDIO, "Shutting down sound stream");
-        
-        if (Config::Get(Config::MAIN_DUMP_AUDIO) && s_audio_dump_start)
-            StopAudioDump();
-        
-        SetSoundStreamRunning(false);
-        g_sound_stream.reset();
-        
-        INFO_LOG(AUDIO, "Done shutting down sound stream");
-    }
-    
-    std::string GetDefaultSoundBackend()
-    {
-        std::string backend = "oeaudio";
-        return backend;
-    }
-    
-    std::vector<std::string> GetSoundBackends()
-    {
-        std::vector<std::string> backends;
-        backends.push_back("oeaudio");
-        return backends;
-    }
-    
+void InitSoundStream(Core::System& system)
+{
+  std::string backend = Config::Get(Config::MAIN_AUDIO_BACKEND);
+  std::unique_ptr<SoundStream> sound_stream = std::make_unique<OpenEmuAudioStream>();
+
+  if (!sound_stream || !sound_stream->Init())
+  {
+    WARN_LOG_FMT(AUDIO, "Could not initialize backend {}, using {} instead.", backend,
+                 BACKEND_NULLSOUND);
+    sound_stream = std::make_unique<NullSound>();
+    sound_stream->Init();
+  }
+
+  system.SetSoundStream(std::move(sound_stream));
+}
+
+void PostInitSoundStream(Core::System& system)
+{
+  // This needs to be called after AudioInterface::Init and SerialInterface::Init (for GBA devices)
+  // where input sample rates are set
+  UpdateSoundStream(system);
+  SetSoundStreamRunning(system, true);
+
+  if (Config::Get(Config::MAIN_DUMP_AUDIO) && !system.IsAudioDumpStarted())
+    StartAudioDump(system);
+}
+
+void ShutdownSoundStream(Core::System& system)
+{
+  INFO_LOG_FMT(AUDIO, "Shutting down sound stream");
+
+  if (Config::Get(Config::MAIN_DUMP_AUDIO) && system.IsAudioDumpStarted())
+    StopAudioDump(system);
+
+  SetSoundStreamRunning(system, false);
+  system.SetSoundStream(nullptr);
+
+  INFO_LOG_FMT(AUDIO, "Done shutting down sound stream");
+}
+
+std::string GetDefaultSoundBackend()
+{
+#if defined(ANDROID)
+  return BACKEND_OPENSLES;
+#else
+  if (CubebStream::IsValid())
+    return BACKEND_CUBEB;
+#endif
+
+#if defined(__linux__)
+  if (AlsaSound::IsValid())
+    return BACKEND_ALSA;
+#endif
+
+  return BACKEND_NULLSOUND;
+}
+
 DPL2Quality GetDefaultDPL2Quality()
 {
   return DPL2Quality::High;
 }
 
-    bool SupportsDPL2Decoder(const std::string& backend)
-    {
-        return false;
-    }
-    
-    bool SupportsLatencyControl(const std::string& backend)
-    {
-        return false;
-    }
-    
-    bool SupportsVolumeChanges(const std::string& backend)
-    {
-        // FIXME: this one should ask the backend whether it supports it.
-        //       but getting the backend from string etc. is probably
-        //       too much just to enable/disable a stupid slider...
-        return false;
-    }
-    
-    void UpdateSoundStream()
-    {
-        if (g_sound_stream)
-        {
-            int volume = Config::Get(Config::MAIN_AUDIO_MUTED) ? 0 : Config::Get(Config::MAIN_AUDIO_VOLUME);
-            g_sound_stream->SetVolume(volume);
-        }
-    }
-    
-    void SetSoundStreamRunning(bool running)
-    {
-        if (!g_sound_stream)
-            return;
-        
-        if (s_sound_stream_running == running)
-            return;
-        s_sound_stream_running = running;
-        
-        if (g_sound_stream->SetRunning(running))
-            return;
-        if (running)
-            ERROR_LOG(AUDIO, "Error starting stream.");
-        else
-            ERROR_LOG(AUDIO, "Error stopping stream.");
-    }
-    
-    void SendAIBuffer(const short* samples, unsigned int num_samples)
-    {
-        if (!g_sound_stream)
-            return;
-        
-        if (Config::Get(Config::MAIN_DUMP_AUDIO) && !s_audio_dump_start)
-            StartAudioDump();
-        else if (!Config::Get(Config::MAIN_DUMP_AUDIO) && s_audio_dump_start)
-            StopAudioDump();
-        
-        Mixer* pMixer = g_sound_stream->GetMixer();
-        
-        if (pMixer && samples)
-        {
-            pMixer->PushSamples(samples, num_samples);
-        }
-    }
-    
-    void StartAudioDump()
-    {
-        std::string audio_file_name_dtk = File::GetUserPath(D_DUMPAUDIO_IDX) + "dtkdump.wav";
-        std::string audio_file_name_dsp = File::GetUserPath(D_DUMPAUDIO_IDX) + "dspdump.wav";
-        File::CreateFullPath(audio_file_name_dtk);
-        File::CreateFullPath(audio_file_name_dsp);
-        g_sound_stream->GetMixer()->StartLogDTKAudio(audio_file_name_dtk);
-        g_sound_stream->GetMixer()->StartLogDSPAudio(audio_file_name_dsp);
-        s_audio_dump_start = true;
-    }
-    
-    void StopAudioDump()
-    {
-        if (!g_sound_stream)
-            return;
-        g_sound_stream->GetMixer()->StopLogDTKAudio();
-        g_sound_stream->GetMixer()->StopLogDSPAudio();
-        s_audio_dump_start = false;
-    }
-    
-    void IncreaseVolume(unsigned short offset)
-    {
-        Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, false);
-        int currentVolume = Config::Get(Config::MAIN_AUDIO_VOLUME);
-        currentVolume += offset;
-        if (currentVolume > AUDIO_VOLUME_MAX)
-            currentVolume = AUDIO_VOLUME_MAX;
-        Config::SetBaseOrCurrent(Config::MAIN_AUDIO_VOLUME, currentVolume);
-        UpdateSoundStream();
-    }
-    
-    void DecreaseVolume(unsigned short offset)
-    {
-        Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, false);
-        int currentVolume = Config::Get(Config::MAIN_AUDIO_VOLUME);
-        currentVolume -= offset;
-        if (currentVolume < AUDIO_VOLUME_MIN)
-            currentVolume = AUDIO_VOLUME_MIN;
-        Config::SetBaseOrCurrent(Config::MAIN_AUDIO_VOLUME, currentVolume);
-        UpdateSoundStream();
-    }
-    
-    void ToggleMuteVolume()
-    {
-          bool isMuted = Config::Get(Config::MAIN_AUDIO_MUTED);
-          Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, !isMuted);
-          UpdateSoundStream();
-    }
+std::vector<std::string> GetSoundBackends()
+{
+  std::vector<std::string> backends;
+
+  backends.emplace_back(BACKEND_NULLSOUND);
+  if (CubebStream::IsValid())
+    backends.emplace_back(BACKEND_CUBEB);
+  if (AlsaSound::IsValid())
+    backends.emplace_back(BACKEND_ALSA);
+
+  return backends;
+}
+
+bool SupportsDPL2Decoder(std::string_view backend)
+{
+#ifndef __APPLE__
+  if (backend == BACKEND_OPENAL)
+    return true;
+#endif
+  if (backend == BACKEND_CUBEB)
+    return true;
+  if (backend == BACKEND_PULSEAUDIO)
+    return true;
+  return false;
+}
+
+bool SupportsLatencyControl(std::string_view backend)
+{
+  return backend == BACKEND_OPENAL || backend == BACKEND_WASAPI;
+}
+
+bool SupportsVolumeChanges(std::string_view backend)
+{
+  // FIXME: this one should ask the backend whether it supports it.
+  //       but getting the backend from string etc. is probably
+  //       too much just to enable/disable a stupid slider...
+  return backend == BACKEND_CUBEB || backend == BACKEND_OPENAL || backend == BACKEND_WASAPI;
+}
+
+void UpdateSoundStream(Core::System& system)
+{
+  SoundStream* sound_stream = system.GetSoundStream();
+
+  if (sound_stream)
+  {
+    int const volume =
+        Config::Get(Config::MAIN_AUDIO_MUTED) ? 0 : Config::Get(Config::MAIN_AUDIO_VOLUME);
+    sound_stream->SetVolume(volume);
+  }
+}
+
+void SetSoundStreamRunning(Core::System& system, bool running)
+{
+  SoundStream* sound_stream = system.GetSoundStream();
+
+  if (!sound_stream)
+    return;
+
+  if (system.IsSoundStreamRunning() == running)
+    return;
+  system.SetSoundStreamRunning(running);
+
+  if (sound_stream->SetRunning(running))
+    return;
+  if (running)
+    ERROR_LOG_FMT(AUDIO, "Error starting stream.");
+  else
+    ERROR_LOG_FMT(AUDIO, "Error stopping stream.");
+}
+
+void SendAIBuffer(Core::System& system, const short* samples, unsigned int num_samples)
+{
+  const SoundStream* const sound_stream = system.GetSoundStream();
+
+  if (!sound_stream)
+    return;
+
+  if (Config::Get(Config::MAIN_DUMP_AUDIO) && !system.IsAudioDumpStarted())
+    StartAudioDump(system);
+  else if (!Config::Get(Config::MAIN_DUMP_AUDIO) && system.IsAudioDumpStarted())
+    StopAudioDump(system);
+
+  Mixer* mixer = sound_stream->GetMixer();
+
+  if (mixer && samples)
+  {
+    mixer->PushSamples(samples, num_samples);
+  }
+}
+
+void StartAudioDump(Core::System& system)
+{
+  const SoundStream* const sound_stream = system.GetSoundStream();
+
+  std::time_t const start_time = std::time(nullptr);
+
+  std::string path_prefix = File::GetUserPath(D_DUMPAUDIO_IDX) + SConfig::GetInstance().GetGameID();
+
+  const auto local_time = Common::LocalTime(start_time);
+  if (!local_time)
+    return;
+
+  std::string base_name = fmt::format("{}_{:%Y-%m-%d_%H-%M-%S}", path_prefix, *local_time);
+
+  const std::string audio_file_name_dtk = fmt::format("{}_dtkdump.wav", base_name);
+  const std::string audio_file_name_dsp = fmt::format("{}_dspdump.wav", base_name);
+  File::CreateFullPath(audio_file_name_dtk);
+  File::CreateFullPath(audio_file_name_dsp);
+  sound_stream->GetMixer()->StartLogDTKAudio(audio_file_name_dtk);
+  sound_stream->GetMixer()->StartLogDSPAudio(audio_file_name_dsp);
+  system.SetAudioDumpStarted(true);
+}
+
+void StopAudioDump(Core::System& system)
+{
+  const SoundStream* const sound_stream = system.GetSoundStream();
+
+  if (!sound_stream)
+    return;
+  sound_stream->GetMixer()->StopLogDTKAudio();
+  sound_stream->GetMixer()->StopLogDSPAudio();
+  system.SetAudioDumpStarted(false);
+}
+
+void IncreaseVolume(Core::System& system, unsigned short offset)
+{
+  Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, false);
+  int currentVolume = Config::Get(Config::MAIN_AUDIO_VOLUME);
+  currentVolume += offset;
+  if (currentVolume > AUDIO_VOLUME_MAX)
+    currentVolume = AUDIO_VOLUME_MAX;
+  Config::SetBaseOrCurrent(Config::MAIN_AUDIO_VOLUME, currentVolume);
+  UpdateSoundStream(system);
+}
+
+void DecreaseVolume(Core::System& system, unsigned short offset)
+{
+  Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, false);
+  int currentVolume = Config::Get(Config::MAIN_AUDIO_VOLUME);
+  currentVolume -= offset;
+  if (currentVolume < AUDIO_VOLUME_MIN)
+    currentVolume = AUDIO_VOLUME_MIN;
+  Config::SetBaseOrCurrent(Config::MAIN_AUDIO_VOLUME, currentVolume);
+  UpdateSoundStream(system);
+}
+
+void ToggleMuteVolume(Core::System& system)
+{
+  bool const isMuted = Config::Get(Config::MAIN_AUDIO_MUTED);
+  Config::SetBaseOrCurrent(Config::MAIN_AUDIO_MUTED, !isMuted);
+  UpdateSoundStream(system);
+}
 }  // namespace AudioCommon

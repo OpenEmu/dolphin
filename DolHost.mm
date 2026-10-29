@@ -73,7 +73,7 @@
 #include "InputCommon/ControllerEmu/Control/Control.h"
 #include "InputCommon/ControlReference/ControlReference.h"
 
-#include "VideoCommon/RenderBase.h"
+//#include "VideoCommon/RenderBase.h"
 #include "VideoCommon/VideoBackendBase.h"
 #include "VideoCommon/VideoConfig.h"
 #include "VideoCommon/OnScreenDisplay.h"
@@ -162,7 +162,7 @@ void DolHost::Init(std::string supportDirectoryPath, std::string cpath)
     
     if (!DiscIO::IsWii(_gameType))
     {
-        SConfig::GetInstance().bWii = false;
+		Core::System::GetInstance().SetIsWii(false);
         
         //Set the wii format to false
         _wiiWAD = false;
@@ -177,7 +177,7 @@ void DolHost::Init(std::string supportDirectoryPath, std::string cpath)
     }
     else
     {
-        SConfig::GetInstance().bWii = true;
+		Core::System::GetInstance().SetIsWii(true);
         
         //Set the wii type
         if (_gameType ==  DiscIO::Platform::WiiWAD)
@@ -210,7 +210,8 @@ bool DolHost::LoadFileAtPath()
         if (state == Core::State::Uninitialized)
             s_running.Clear();
     });
-    
+	auto &system = Core::System::GetInstance();
+
     //    DolphinAnalytics::Instance()->ReportDolphinStart("openEmu");
     //
     //    if (_wiiWAD)
@@ -218,24 +219,26 @@ bool DolHost::LoadFileAtPath()
     //    //    else
     //    //        WiiUtils::DoDiscUpdate(nil, _gameRegionName);
 
-    if (!BootManager::BootCore(BootParameters::GenerateFromFile(_gamePath), wsi))
-        return false;
-   
-    // Initialize Input
+    // Input has to be up and running before the core is booted. BootCore() starts the
+    // emulation thread immediately, and that thread asserts that the controller interface
+    // is already initialized (Core::EmuThread -> ASSERT(g_controller_interface.IsInit())).
     Input::Openemu_Input_Init();
-    
+
+    if (!BootManager::BootCore(system, BootParameters::GenerateFromFile(_gamePath), wsi))
+        return false;
+
     //Add 4 Joypads
     for (int i = 0; i < 4; i++)
         Input::openemu_set_controller_port_device(i, OEDolDevJoy);
 
     init_Callback();
     
-    while (!Core::IsRunningAndStarted() && s_running.IsSet())
+    while (!Core::IsRunningOrStarting(system) && s_running.IsSet())
     {
-        Core::HostDispatchJobs();
+        Core::HostDispatchJobs(system);
     }
     
-    Core::SetState(Core::State::Running);
+    Core::SetState(system, Core::State::Running);
     
     return true;
 }
@@ -243,25 +246,26 @@ bool DolHost::LoadFileAtPath()
 void DolHost::Pause(bool flag)
 {
     Core::State state = flag ? Core::State::Paused : Core::State::Running;
-    Core::SetState(state);
+    Core::SetState(Core::System::GetInstance(), state);
 }
 
 void DolHost::RequestStop()
 {
-    Core::SetState(Core::State::Running);
-    ProcessorInterface::PowerButton_Tap();
+	auto &system = Core::System::GetInstance();
+    Core::SetState(system, Core::State::Running);
+	system.GetProcessorInterface().PowerButton_Tap();
     
-    Core::Stop();
-    while (CPU::GetState() != CPU::State::PowerDown)
+    Core::Stop(system);
+    while (system.GetCPU().GetState() != CPU::State::PowerDown)
         usleep(1000);
     
-    Core::Shutdown();
+    Core::Shutdown(system);
     UICommon::Shutdown();
 }
 
 void DolHost::Reset()
 {
-    ProcessorInterface::ResetButton_Tap();
+	Core::System::GetInstance().GetProcessorInterface().PowerButton_Tap();
 }
 
 void DolHost::UpdateFrame()
@@ -275,7 +279,7 @@ void DolHost::UpdateFrame()
 
 bool DolHost::CoreRunning()
 {
-    if (Core::GetState() == Core::State::Running)
+    if (Core::GetState(Core::System::GetInstance()) == Core::State::Running)
         return true;
     
     return false;
@@ -296,7 +300,7 @@ void DolHost::SetBackBufferSize(int width, int height) {
 void DolHost::SetVolume(float value)
 {
     Config::SetBaseOrCurrent(Config::MAIN_AUDIO_VOLUME, value * 100);
-    AudioCommon::UpdateSoundStream();
+    AudioCommon::UpdateSoundStream(Core::System::GetInstance());
 }
 
 # pragma mark - Save states
@@ -308,13 +312,13 @@ bool DolHost::setAutoloadFile(std::string saveStateFile)
 
 bool DolHost::SaveState(std::string saveStateFile)
 {
-    State::SaveAs(saveStateFile);
+    State::SaveAs(Core::System::GetInstance(), saveStateFile);
     return true;
 }
 
 bool DolHost::LoadState(std::string saveStateFile)
 {
-    State::LoadAs(saveStateFile);
+    State::LoadAs(Core::System::GetInstance(), saveStateFile);
     
     if (DiscIO::IsWii(_gameType))
     {
@@ -426,7 +430,8 @@ void DolHost::SetCheat(std::string code, std::string type, bool enabled)
     if(!exists)
         gcodes.push_back(gcode);
     
-    Gecko::SetActiveCodes(gcodes);
+    Gecko::SetActiveCodes(gcodes, SConfig::GetInstance().GetGameID(),
+                          SConfig::GetInstance().GetRevision());
     
     
     //Check to make sure the ARcode is not already in the list
@@ -460,7 +465,13 @@ void DolHost::SetCheat(std::string code, std::string type, bool enabled)
     if(!exists)
         arcodes.push_back(arcode);
     
-    ActionReplay::RunAllActive();
+    // Codes are normally applied by the patch engine on the next frame. Running them right away
+    // additionally needs the CPU thread guard, which is only available while emulation runs.
+    if (Core::IsCPUThread())
+    {
+        const Core::CPUThreadGuard guard(Core::System::GetInstance());
+        ActionReplay::RunAllActive(guard);
+    }
 }
 
 # pragma mark - Controls
@@ -566,7 +577,7 @@ std::string DolHost::GetNameOfRegion(DiscIO::Region region)
             
         case DiscIO::Region::Unknown:
         default:
-            return nullptr;
+            return "";
     }
 }
 
@@ -595,7 +606,7 @@ std::string DolHost::GetDirOfCountry(DiscIO::Country country)
             
         case DiscIO::Country::Unknown:
         default:
-            return nullptr;
+            return "";
     }
 }
 
@@ -633,3 +644,18 @@ void Host_ShowVideoConfig(void*, const std::string&) {}
 void Host_YieldToUI() {}
 void Host_TitleChanged() {}
 void Host_UpdateProgressDialog(const char* caption, int position, int total) {}
+void Host_PPCSymbolsChanged() {}
+void Host_PPCBreakpointsChanged() {}
+void Host_JitCacheInvalidation() {}
+void Host_JitProfileDataWiped() {}
+void Host_UpdateDiscordClientID(const std::string& client_id) {}
+bool Host_UpdateDiscordPresenceRaw(const std::string& details, const std::string& state,
+                                   const std::string& large_image_key,
+                                   const std::string& large_image_text,
+                                   const std::string& small_image_key,
+                                   const std::string& small_image_text,
+                                   const int64_t start_timestamp, const int64_t end_timestamp,
+                                   const int party_size, const int party_max)
+{
+    return false;
+}

@@ -107,7 +107,7 @@ const Info<bool> GFX_PREFER_GLES{{System::GFX, "Settings", "PreferGLES"}, false}
 
 const Info<bool> GFX_ENHANCE_FORCE_FILTERING{{System::GFX, "Enhancements", "ForceFiltering"},
                                              false};
-const Info<int> GFX_ENHANCE_MAX_ANISOTROPY{{System::GFX, "Enhancements", "MaxAnisotropy"}, 0};
+const Info<AnisotropicFilteringMode> GFX_ENHANCE_MAX_ANISOTROPY{{System::GFX, "Enhancements", "MaxAnisotropy"}, AnisotropicFilteringMode::Default};
 const Info<std::string> GFX_ENHANCE_POST_SHADER{
     {System::GFX, "Enhancements", "PostProcessingShader"}, ""};
 const Info<bool> GFX_ENHANCE_FORCE_TRUE_COLOR{{System::GFX, "Enhancements", "ForceTrueColor"},
@@ -122,14 +122,14 @@ const Info<float> GFX_ENHANCE_ARBITRARY_MIPMAP_DETECTION_THRESHOLD{
 // Graphics.Stereoscopy
 
 const Info<StereoMode> GFX_STEREO_MODE{{System::GFX, "Stereoscopy", "StereoMode"}, StereoMode::Off};
-const Info<int> GFX_STEREO_DEPTH{{System::GFX, "Stereoscopy", "StereoDepth"}, 20};
-const Info<int> GFX_STEREO_CONVERGENCE_PERCENTAGE{
+const Info<float> GFX_STEREO_DEPTH{{System::GFX, "Stereoscopy", "StereoDepth"}, 20};
+const Info<float> GFX_STEREO_CONVERGENCE_PERCENTAGE{
     {System::GFX, "Stereoscopy", "StereoConvergencePercentage"}, 100};
 const Info<bool> GFX_STEREO_SWAP_EYES{{System::GFX, "Stereoscopy", "StereoSwapEyes"}, false};
-const Info<int> GFX_STEREO_CONVERGENCE{{System::GFX, "Stereoscopy", "StereoConvergence"}, 20};
+const Info<float> GFX_STEREO_CONVERGENCE{{System::GFX, "Stereoscopy", "StereoConvergence"}, 20};
 const Info<bool> GFX_STEREO_EFB_MONO_DEPTH{{System::GFX, "Stereoscopy", "StereoEFBMonoDepth"},
                                            false};
-const Info<int> GFX_STEREO_DEPTH_PERCENTAGE{{System::GFX, "Stereoscopy", "StereoDepthPercentage"},
+const Info<float> GFX_STEREO_DEPTH_PERCENTAGE{{System::GFX, "Stereoscopy", "StereoDepthPercentage"},
                                             100};
 
 // Graphics.Hacks
