@@ -48,3 +48,8 @@
 #define HAVE_SOCKET 1
 #define USE_UNIX_SOCKETS 1
 #define CURL_OS "macOS"
+// Dolphin only uses curl for HTTP requests (cover art, netplay metadata), so the
+// LDAP protocol is disabled. Otherwise curl's LDAP code would be compiled in and
+// drag in the deprecated system OpenLDAP library.
+#define CURL_DISABLE_LDAP 1
+#define CURL_DISABLE_LDAPS 1
