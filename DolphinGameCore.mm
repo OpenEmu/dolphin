@@ -39,6 +39,7 @@
 #import "DolphinGameCore.h"
 #include "DolHost.h"
 #include "AudioCommon/SoundStream.h"
+#include "Core/System.h"
 #include "OpenEmuAudioStream.h"
 #include <stdatomic.h>
 
@@ -56,7 +57,6 @@
 
 DolphinGameCore *_current = 0;
 
-extern std::unique_ptr<SoundStream> g_sound_stream;
 
 @implementation DolphinGameCore
 {
@@ -257,8 +257,9 @@ extern std::unique_ptr<SoundStream> g_sound_stream;
 
 - (NSUInteger)read:(void *)buffer maxLength:(NSUInteger)len
 {
-    if (_isInitialized && g_sound_stream)
-        return static_cast<OpenEmuAudioStream*>(g_sound_stream.get())->readAudio(buffer, (int)len);
+    SoundStream* sound_stream = Core::System::GetInstance().GetSoundStream();
+    if (_isInitialized && sound_stream)
+        return static_cast<OpenEmuAudioStream*>(sound_stream)->readAudio(buffer, (int)len);
     return 0;
 }
 
