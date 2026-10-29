@@ -1,0 +1,7 @@
+// Release/optimized variant of openemu-arm64.xcconfig.
+//
+// NDEBUG is added because the project does not set it for the Dolphin target,
+// while upstream's CMake Release build does. Debug builds of this core are
+// orders of magnitude slower and only useful for diagnostics.
+#include "openemu-arm64.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) NDEBUG

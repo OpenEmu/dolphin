@@ -39,3 +39,38 @@ GC:
   gc
   gcz
   ciso
+
+## Building the core for Apple Silicon (arm64)
+
+The project does not set up every include directory and source file that the
+pinned dolphin revision needs, so the build takes its settings from
+`openemu-arm64.xcconfig` (and `openemu-arm64-release.xcconfig`, which adds
+`NDEBUG`). Two things have to exist before building:
+
+1. An arm64 `OpenEmuBase.framework` build from the OpenEmu workspace. Point
+   `OE_OPENEMU_BUILD_DIR` at its `Build/Products/Debug` directory if it is not
+   in the default location.
+2. glslang's `build_info.h`, which upstream generates with CMake. Generate it
+   into the ignored build directory:
+
+   ```
+   python3 dolphin/Externals/glslang/glslang/build_info.py \
+       dolphin/Externals/glslang/glslang \
+       -i dolphin/Externals/glslang/glslang/build_info.h.tmpl \
+       -o build/gen/glslang/build_info.h
+   ```
+
+Then build the release configuration. Debug works as well but is far too slow
+for emulation, it is only useful for diagnostics:
+
+```
+xcodebuild -project Dolphin.xcodeproj -target Dolphin -configuration Release \
+    ARCHS=arm64 ONLY_ACTIVE_ARCH=YES \
+    -xcconfig openemu-arm64-release.xcconfig \
+    CODE_SIGNING_ALLOWED=NO CONFIGURATION_BUILD_DIR=<output-dir> build
+```
+
+The resulting `Dolphin.oecoreplugin` has to be ad-hoc signed before OpenEmu can
+load it (`codesign --force --deep -s - Dolphin.oecoreplugin`) and belongs in
+`~/Library/Application Support/OpenEmu/Cores/`.
+
